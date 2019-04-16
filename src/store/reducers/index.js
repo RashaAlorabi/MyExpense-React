@@ -3,7 +3,14 @@ import { combineReducers } from "redux";
 
 // Reducers
 import itemReducer from "./itemReducer";
+import parntReducer from "./parentReducer";
+import authReducer from "./authentication";
+import errorReducer from "./errors";
+
 // Combining the reducers
 export default combineReducers({
-  item: itemReducer
+  auth: authReducer,
+  errors: errorReducer,
+  item: itemReducer,
+  parnts: parntReducer,
 });
