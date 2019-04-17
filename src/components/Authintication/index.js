@@ -22,12 +22,12 @@ class Login extends Component {
   render() {
         const errors = this.props.errors;
     return (
-        <div>
+        <div className={"container"}>
           <br/>
-          <div>
+          <div className={"text-center col-6"}>
           {!!errors.length && (
              
-            <div>
+            <div >
                 {errors.map(error => (
                  <p key={error}>{error}</p>
                ))}
@@ -37,10 +37,10 @@ class Login extends Component {
             </div>
             )
           }
-              <h1>Login</h1>
+              <h1>تسجيل دخول</h1>
             <form onSubmit={this.submitHandler}>
-              <div className="form-group text-left">
-                <h5 className="ml-2">User Name</h5>
+              <div className="form-group text-right">
+                <h5 className="ml-2">اسم المستخدم</h5>
                 <input 
                 type="text"
                 placeholder="Username"
@@ -48,8 +48,8 @@ class Login extends Component {
                 onChange={this.changeHandler} 
                 className="form-control rounded-pill"/>
               </div>
-              <div className="form-group text-left">
-                <h5 className="ml-2">Password</h5>
+              <div className="form-group text-right">
+                <h5 className="ml-2">كلمة المرور</h5>
                 <input
                 type="password"
                 placeholder="Password"
@@ -57,7 +57,7 @@ class Login extends Component {
                 onChange={this.changeHandler}
                 className="form-control rounded-pill"/>
               </div>
-              <button type="submit" className="btn btn-primary rounded-pill">Login</button>
+              <button type="submit" className="btn btn-primary rounded-pill btn-lg">دخول</button>
             </form>
           </div>
         </div>

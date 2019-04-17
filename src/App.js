@@ -7,8 +7,8 @@ import * as actionCreators from "./store/actions/authentication";
 import { connect } from 'react-redux';
 
 class App extends Component {
-  componentDidMount(){
-    this.props.checkForExpiredToken()
+  async componentDidMount(){
+    await this.props.checkForExpiredToken()
   }
   render() {
     return (
