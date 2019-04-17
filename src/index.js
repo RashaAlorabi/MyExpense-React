@@ -1,16 +1,15 @@
-import React from 'react';
+
+import React from "react";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 import store from "./store";
-import Parent from "./components/Parents";
-import Login from "./components/Authintication";
 
 ReactDOM.render(
-<Provider store={store}>
-	<BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,

@@ -11,6 +11,6 @@ import errorReducer from "./errors";
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  item: itemReducer,
   parents: parentsReducer,
+  items: itemReducer
 });
