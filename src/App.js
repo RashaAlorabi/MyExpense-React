@@ -1,28 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+
+import "./App.css";
+import { connect } from "react-redux";
+import * as actionCreators from "./store/actions/index";
+
+import StudentsList from "./components/StudentsList";
+import StudentDetail from "./components/StudentDetail";
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.fetchStudentsList();
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Switch>
+          <Route path="/student/:studentID" component={StudentDetail} />
+          <Route
+            path="/students"
+            render={props => (
+              <StudentsList {...props} students={this.props.students} />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    loading: state.studentReducer.loading,
+    students: state.studentReducer.students
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
+});
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(App);
