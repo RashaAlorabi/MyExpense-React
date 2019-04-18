@@ -1,3 +1,9 @@
+export const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
+export const FETCH_STUDENT_DETAIL = "FETCH_STUDENT_DETAIL";
+export const STUDENT_ADD = "STUDENT_ADD";
+export const STUDENT_UPDATE = "STUDENT_UPDATE";
+export const STUDENT_DELETE = "STUDENT_DELETE";
+
 export const FETCH_ITEMS = "FETCH_ITEMS";
 
 export const FETCH_PARENTS = "FETCH_PARENTS";
@@ -9,4 +15,3 @@ export const UPDATE_ITEM = "UPDATE_ITEM";
 export const DELETE_ITEM = "DELETE_ITEM";
 
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
-
