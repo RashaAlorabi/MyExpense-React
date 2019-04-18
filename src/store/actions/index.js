@@ -7,4 +7,14 @@ export {
   fetchCategories
 } from "./itemActions";
 
-export { checkForExpiredToken } from "./authentication";
+export {
+  fetchStudentsList,
+  fetchStudentDetail,
+  addStudent,
+  updateStudent,
+  deleteStudent
+} from "./studentAction";
+
+export { checkForExpiredToken, login, logout } from "./authentication";
+export { resetErrors } from "./errors";
+
