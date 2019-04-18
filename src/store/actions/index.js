@@ -3,8 +3,10 @@ export {
   addItem,
   updateItem,
   deleteItem,
+  fetchItemDetail,
   fetchCategories
 } from "./itemActions";
+
 export {
   fetchStudentsList,
   fetchStudentDetail,
@@ -15,3 +17,4 @@ export {
 
 export { checkForExpiredToken, login, logout } from "./authentication";
 export { resetErrors } from "./errors";
+

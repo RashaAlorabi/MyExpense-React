@@ -1,22 +1,24 @@
-// React
 import React, { Component } from "react";
 import "./styles.css";
-// Redux
 import { connect } from "react-redux";
-
-// Action Functions
+import { Link } from "react-router-dom";
 import * as actionCreators from "../../store/actions";
 
 class ItemCard extends Component {
   render() {
     const item = this.props.item;
-    console.log("TCL: ItemCard -> render -> item", item);
 
     return (
       <div>
-        <div>
-          <div>
-            <h5>{item.name}</h5>
+        <div
+          className="card mx-3"
+          onClick={() => this.props.fetchItemDetail(item.id)}
+        >
+          <div className="card border-light mb-3" style={{ maxWidth: "18rem" }}>
+            <Link to={`/item/detail/${item.id}`}>
+              <h5>{item.name}</h5>
+            </Link>
+
             <img className="card-img-top" src={item.image} alt="img" />
             <div className="card-text" style={{ color: "#808080" }}>
               {item.price} ريال
@@ -43,7 +45,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchItems: () => dispatch(actionCreators.fetchItems())
+  fetchItemDetail: itemID => dispatch(actionCreators.fetchItemDetail(itemID))
 });
 
 export default connect(

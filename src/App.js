@@ -3,6 +3,13 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import Parents from "./components/Parents";
 import Login from "./components/Authintication";
 import Navbar from "./components/Navbar";
+
+
+import AddItem from "./components/Items/AddItem";
+import UpdateItem from "./components/Items/UpdateItem";
+import ItemDetail from "./components/Items/ItemDetail";
+
+
 import * as actionCreators from "./store/actions/index";
 import { connect } from "react-redux";
 import Items from "./components/Items";
@@ -15,6 +22,9 @@ class App extends Component {
   async componentDidMount() {
     await this.props.checkForExpiredToken();
     this.props.fetchStudentsList();
+    this.props.fetchItems();
+    this.props.fetchCategories();
+
   }
   render() {
     return (
@@ -23,6 +33,18 @@ class App extends Component {
         <Switch>
           <Route path="/Parents" component={Parents} />
           <Route path="/Login" component={Login} />
+
+          <Route path="/add/item" render={props => <AddItem {...props} />} />
+          <Route
+            path="/item/update/:itemId"
+            render={props => <UpdateItem {...props} item={this.props.item} />}
+          />
+          <Route
+            path="/item/detail/:itemId"
+            render={props => <ItemDetail {...props} />}
+          />
+          
+
           <Route path="/items/:category?" component={Items} />
           <Route path="/add/student" component={StudentForm} />
           <Route
@@ -42,6 +64,7 @@ class App extends Component {
             )}
           />
 
+
           <Redirect to="/Login" />
         </Switch>
       </div>
@@ -59,7 +82,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken()),
+
+    fetchItems: () => dispatch(actionCreators.fetchItems()),
+    fetchCategories: () => dispatch(actionCreators.fetchCategories())
+
     fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
+
   };
 };
 export default withRouter(
