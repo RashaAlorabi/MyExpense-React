@@ -20,8 +20,9 @@ const setAuthToken = token => {
 };
 /* -- check for expired token -- */
 export const checkForExpiredToken = () => {
+  
   return dispatch => {
-    // Get token
+    
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -54,10 +55,11 @@ export const login = (userData, history) => {
       setAuthToken(user.token);
       dispatch(setCurrentUser(decodedUser));
       dispatch({
-        type: actionTypes.SET_ERRORS,
-        payload: []
-      });
-      history.push("/Parents");
+       type: actionTypes.SET_ERRORS,
+       payload: []
+     });
+     history.push("/Home");
+
     } catch (error) {
       dispatch({
         type: actionTypes.SET_ERRORS,

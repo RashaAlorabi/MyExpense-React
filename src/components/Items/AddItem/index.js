@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 import CategoryOption from "./CategoryOption";
+import * as actionCreatorsCh from "../../../store/actions/authentication";
+
 class index extends Component {
   state = {
     name: "",
@@ -127,6 +129,7 @@ class index extends Component {
                 onChange={this.onImageChange}
                 id="inputFileToLoad"
               />
+
             </div>
 
             <input type="submit" />

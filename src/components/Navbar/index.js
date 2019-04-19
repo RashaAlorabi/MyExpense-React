@@ -1,37 +1,61 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actionCreators from '../../store/actions';
+import { Link } from 'react-router-dom'
 
 class index extends React.Component {
 
+    componentDidUpdate(){
+
+    }
     render() {
-        return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-           
-          
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">المقصف</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">الطلاب</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">أولياء الأمور</a>
-                </li>
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">الصفحة الرئيسية</a>
-                </li>
-              </ul>
-             
-            </div>
-            <a className="navbar-brand" href="#">مصروفي</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-        </nav> 
-        );
+        let { profile , loading } = this.props.school
+        let { user } = this.props.auth
+        if (user){
+            if (loading){
+                return (
+                    <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
+                        <div>
+                            <h1 className="navbar-brand">{`مصروفي`}</h1>
+                        </div>
+                    </nav>
+                )
+            }else{
+                
+                return (
+                    <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
+                        <div>
+                            <span className="btn btn-light" onClick={() => this.props.logout()}>
+                                <i className="fas fa-sign-out-alt"> تسجيل خروج</i></span>
+                        </div>
+                        <div>
+                            <h1 className="navbar-brand">{`مصروفي ${profile.name}`}</h1>
+                        </div>
+                    </nav>
+                )
+            }
+        }else{
+            return (
+                <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
+                    <div>
+                        <Link to="/Login" className="btn btn-light">
+                            <i className="fas fa-sign-out-alt"> تسجيل دخول</i></Link>
+                    </div>
+                    <div>
+                        <h1 className="navbar-brand">{`مصروفي`}</h1>
+                    </div>
+                </nav>
+            )
+        }
     }
 }
-
-export default index;
+const mapStateToProps = state => {
+    return {
+        school: state.school,
+        auth : state.auth,
+    };
+  };
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(actionCreators.logout())
+  });
+export default connect(mapStateToProps, mapDispatchToProps)(index);

@@ -1,3 +1,4 @@
+
 export {
   fetchItems,
   addItem,
@@ -6,6 +7,10 @@ export {
   fetchItemDetail,
   fetchCategories
 } from "./itemActions";
+
+export {
+  fetchSchool
+} from "./schoolProfile";
 
 export {
   fetchStudentsList,
