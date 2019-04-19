@@ -3,6 +3,8 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 import CategoryOption from "./CategoryOption";
+import * as actionCreatorsCh from "../../../store/actions/authentication";
+
 class index extends Component {
   state = {
     name: "",
@@ -10,15 +12,16 @@ class index extends Component {
     description: "",
     stock: "",
     image: null,
-    category: "",
-    school: ""
+    category: "1",
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    await  this.props.checkForExpiredToken()
     this.props.fetchCategories();
   }
   addItem = async item => {
     item.preventDefault();
+    console.log("this.state ===> ", this.state)
     await this.props.addItem(this.state);
   };
 
@@ -26,7 +29,6 @@ class index extends Component {
     this.setState({ [event.target.name]: event.target.value });
   render() {
     let category = this.props.categories;
-    console.log("TCL: index -> render -> category", category);
     if (category) {
       category = this.props.categories.map(category => (
         <CategoryOption key={category.id} category={category} />
@@ -88,7 +90,7 @@ class index extends Component {
                 onChange={this.onInputChange}
               />
             </Form.Group>
-            <Button variant="light" block onClick={this.addItem}>
+            <Button onClick={this.addItem}  variant="light" block>
               إضافة
             </Button>
           </Form>
@@ -103,7 +105,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(actionCreators.addItem(item)),
-  fetchCategories: () => dispatch(actionCreators.fetchCategories())
+  fetchCategories: () => dispatch(actionCreators.fetchCategories()),
+  checkForExpiredToken: () => dispatch(actionCreatorsCh.checkForExpiredToken()),
 });
 
 export default connect(

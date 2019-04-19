@@ -22,9 +22,9 @@ class Login extends Component {
   render() {
         const errors = this.props.errors;
     return (
-        <div className={"container"}>
+        <div className="container">
           <br/>
-          <div className={"text-center col-6"}>
+          <div className="text-center col-12">
           {!!errors.length && (
              
             <div >

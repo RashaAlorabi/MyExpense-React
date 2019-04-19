@@ -1,3 +1,4 @@
+
 export {
   fetchItems,
   addItem,
@@ -5,3 +6,13 @@ export {
   deleteItem,
   fetchCategories
 } from "./itemActions";
+
+export {
+  fetchSchool
+} from "./schoolProfile";
+
+export {
+  logout,
+  checkForExpiredToken,
+  login
+} from "./authentication"

@@ -21,8 +21,9 @@ const setAuthToken = token => {
 };
         /* -- check for expired token -- */
 export const checkForExpiredToken = () => {
+  
   return dispatch => {
-    // Get token
+    
     const token = localStorage.getItem("token");
     
     if (token) {
@@ -50,7 +51,7 @@ export const checkForExpiredToken = () => {
 export const login = (userData, history) => {
   return async dispatch => {
     try {
-      let response = await instance.post("login/", userData);
+      let response = await instance.post("school/login/", userData);
       let user = response.data;
       let decodedUser = jwt_decode(user.token);
       setAuthToken(user.token);
@@ -59,7 +60,7 @@ export const login = (userData, history) => {
        type: actionTypes.SET_ERRORS,
        payload: []
      });
-     history.push("/Parents");
+     history.push("/Home");
     } catch (error) {
       dispatch({
        type: actionTypes.SET_ERRORS,
