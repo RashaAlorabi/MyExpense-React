@@ -131,7 +131,9 @@ class StudentUpdate extends Component {
               id="inputFileToLoad"
             />
           </div>
-          <input type="submit" />
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
@@ -140,7 +142,7 @@ class StudentUpdate extends Component {
 
 const mapStateToProps = state => {
   return {
-    errors: state.errors.errors,
+    errors: state.errorReducer.errors,
     student: state.studentReducer.student
   };
 };
