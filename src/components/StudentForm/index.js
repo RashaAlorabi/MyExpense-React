@@ -5,11 +5,11 @@ import * as actionCreators from "../../store/actions/index";
 
 class StudentForm extends Component {
   state = {
-    parent_id: 0,
+    parent_id: "",
     email: "",
     name: "",
     grade: "",
-    limit: 0,
+    limit: "",
     health: "",
     image: "",
     image_file: "",
@@ -60,100 +60,98 @@ class StudentForm extends Component {
       </option>
     ));
     return (
-      <div className="mt-5 p-2">
-        {this.props.user && (
-          <form onSubmit={this.submitStudent}>
-            {!!errors.length && (
-              <div className="alert alert-danger" role="alert">
-                {errors.map(error => (
-                  <p key={error}>{error}</p>
-                ))}
-              </div>
-            )}
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Parent ID</span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                name="parent_id"
-                value={this.state.parent_id}
-                onChange={this.textChangeHandler}
-              />
+      <div className="signup-form">
+        <form onSubmit={this.submitStudent}>
+          {!!errors.length && (
+            <div className="alert alert-danger" role="alert">
+              {errors.map(error => (
+                <p key={error}>{error}</p>
+              ))}
             </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Email</span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                name="email"
-                value={this.state.email}
-                onChange={this.textChangeHandler}
-              />
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Student name</span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                value={this.state.name}
-                onChange={this.textChangeHandler}
-              />
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Student grade</span>
-              </div>
-              <select
-                className="form-control"
-                name="grade"
-                onChange={this.textChangeHandler}
-                value={this.state.grade}
-              >
-                {grades}
-              </select>
-            </div>
+          )}
+          <h2> Enroll Student</h2>
 
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Student expense limit</span>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              name="parent_id"
+              placeholder="Parend ID"
+              value={this.state.parent_id}
+              onChange={this.textChangeHandler}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              name="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.textChangeHandler}
+            />
+          </div>
+          <div className="form-group">
+            <div className="row">
+              <div className="col-xs-6">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="name"
+                  value={this.state.name}
+                  placeholder="Name"
+                  onChange={this.textChangeHandler}
+                />
               </div>
-              <input
-                type="text"
-                className="form-control"
-                name="limit"
-                value={this.state.limit}
-                onChange={this.textChangeHandler}
-              />
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Student health</span>
+              <div className="col-xs-6">
+                <select
+                  className="form-control"
+                  name="grade"
+                  placeholder="Grade"
+                  onChange={this.textChangeHandler}
+                  value={this.state.grade}
+                >
+                  {grades}
+                </select>
               </div>
-              <input
-                type="text"
-                className="form-control"
-                name="health"
-                value={this.state.health}
-                onChange={this.textChangeHandler}
-              />
             </div>
+          </div>
+          <div className="form-group">
+            <div className="row">
+              <div className="col-xs-6">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="limit"
+                  placeholder="Expense Limit"
+                  value={this.state.limit}
+                  onChange={this.textChangeHandler}
+                />
+              </div>
+              <div className="col-xs-6">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="health"
+                  placeholder="Health"
+                  value={this.state.health}
+                  onChange={this.textChangeHandler}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
             <input
               type="file"
               className="form-control"
               name="image_file"
+              placeholder="Pic"
               onChange={this.onImageChange}
               id="inputFileToLoad"
             />
-            <input type="submit" />
-          </form>
-        )}
+          </div>
+          <input type="submit" />
+        </form>
       </div>
     );
   }
@@ -161,7 +159,7 @@ class StudentForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    errors: state.errors.errors,
+    errors: state.errorReducer.errors,
     user: state.auth.user
   };
 };

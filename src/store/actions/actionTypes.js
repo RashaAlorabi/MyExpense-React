@@ -6,6 +6,9 @@ export const STUDENT_ADD = "STUDENT_ADD";
 export const STUDENT_UPDATE = "STUDENT_UPDATE";
 export const STUDENT_DELETE = "STUDENT_DELETE";
 
+export const RESET_ERRORS = "RESET_ERRORS";
+
+
 export const FETCH_PARENTS = "FETCH_PARENTS";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_ERRORS = "SET_ERRORS";

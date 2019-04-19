@@ -55,10 +55,12 @@ export const login = (userData, history) => {
       setAuthToken(user.token);
       dispatch(setCurrentUser(decodedUser));
       dispatch({
+
        type: actionTypes.SET_ERRORS,
        payload: []
      });
      history.push("/Home");
+
 
     } catch (error) {
       dispatch({
