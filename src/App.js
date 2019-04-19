@@ -62,7 +62,7 @@ class App extends Component {
                 render={props => <StudentDetail {...props} />}
               />
               <Route
-                path="/students"
+                path="/students:Grade?"
                 render={props => (
                   <StudentsList {...props} students={this.props.students} />
                 )}

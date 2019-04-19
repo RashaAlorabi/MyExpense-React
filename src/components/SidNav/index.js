@@ -14,26 +14,26 @@ class index extends Component {
         <div className="m-1">
         <a href="#homeSubmen" data-toggle="collapse" aria-expanded="false" className="btn btn-lg btn-light btn-block dropdown-toggle">الطلاب</a>
           <ul className="collapse list-unstyled" id="homeSubmen">
-            <Link to="" className="my-2 btn btn-lg btn-light btn-block"> أضافة طالب</Link>
+            <Link to="/add/student" className="my-2 btn btn-lg btn-light btn-block"> أضافة طالب</Link>
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="btn btn-lg btn-light btn-block dropdown-toggle">قائمة الطلاب</a>
               <ul className="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                  <Link to="" className="my-2 btn btn-lg btn-light btn-block">الصف الاول</Link>
+                  <Link to="/students:1" className="my-2 btn btn-lg btn-light btn-block">الصف الاول</Link>
                 </li>
                 <li>
-                  <Link href="#" className="my-2 btn btn-lg btn-light btn-block">الصف الثاني</Link>
+                  <Link to="/students:2" className="my-2 btn btn-lg btn-light btn-block">الصف الثاني</Link>
                 </li>
                 <li>
-                  <a href="#" className="my-2 btn btn-lg btn-light btn-block">الصف الثالث</a>
+                  <Link to="/students:3" className="my-2 btn btn-lg btn-light btn-block">الصف الثالث</Link>
                 </li>
                 <li>
-                  <a href="#" className="my-2 btn btn-lg btn-light btn-block">الصف الرابع</a>
+                  <Link to="/students:4" className="my-2 btn btn-lg btn-light btn-block">الصف الرابع</Link>
                 </li>
                 <li>
-                  <a href="#" className="my-2 btn btn-lg btn-light btn-block">الصف الخامس</a>
+                  <Link to="/students:5" className="my-2 btn btn-lg btn-light btn-block">الصف الخامس</Link>
                 </li>
                 <li>
-                  <a href="#" className="my-2 btn btn-lg btn-light btn-block">الصف السادس</a>
+                  <Link to="/students:6" className="my-2 btn btn-lg btn-light btn-block">الصف السادس</Link>
                 </li>
               </ul>
           </ul>
@@ -42,7 +42,7 @@ class index extends Component {
           <a href="#ALMNTGAT" data-toggle="collapse" aria-expanded="false" className="btn btn-lg btn-light btn-block dropdown-toggle"> المنتجات</a>
             <ul className="collapse list-unstyled" id="ALMNTGAT">
               <li>
-                <Link to="" className="my-2 btn btn-lg btn-light btn-block">أضافة منتج</Link>
+                <Link to="/add/item" className="my-2 btn btn-lg btn-light btn-block">أضافة منتج</Link>
               </li>
               <li>
                 <Link to="/items" className="my-2 btn btn-lg btn-light btn-block">عرض المنتجات</Link>
