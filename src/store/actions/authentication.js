@@ -4,11 +4,10 @@ import jwt_decode from "jwt-decode";
 import * as actionTypes from "./actionTypes";
 // import { setErrors } from "./errors";
 
-
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api"
 });
-        /* -- set Token to brow -- */
+/* -- set Token to brow -- */
 const setAuthToken = token => {
   if (token) {
     localStorage.setItem("token", token);
@@ -19,19 +18,18 @@ const setAuthToken = token => {
     delete axios.defaults.headers.common.Authorization;
   }
 };
-        /* -- check for expired token -- */
+/* -- check for expired token -- */
 export const checkForExpiredToken = () => {
   
   return dispatch => {
     
     const token = localStorage.getItem("token");
-    
+
     if (token) {
       const currentTime = Date.now() / 1000;
 
       // Decode token and get user info
       const user = jwt_decode(token);
-      
 
       console.log((user.exp - currentTime) / 60);
 
@@ -47,7 +45,7 @@ export const checkForExpiredToken = () => {
     }
   };
 };
-        /* -- login from api -- */
+/* -- login from api -- */
 export const login = (userData, history) => {
   return async dispatch => {
     try {
@@ -61,16 +59,17 @@ export const login = (userData, history) => {
        payload: []
      });
      history.push("/Home");
+
     } catch (error) {
       dispatch({
-       type: actionTypes.SET_ERRORS,
-       payload: error.response.data
-     });
+        type: actionTypes.SET_ERRORS,
+        payload: error.response.data
+      });
     }
   };
 };
-        /* -- signup from api -- */
-export const signup = (userData) => {
+/* -- signup from api -- */
+export const signup = userData => {
   return async dispatch => {
     try {
       let response = await instance.post("register/", userData);
@@ -79,22 +78,20 @@ export const signup = (userData) => {
       setAuthToken(user.token);
       dispatch(setCurrentUser(decodedUser));
       dispatch({
-       type: actionTypes.SET_ERRORS,
-       payload: []
-     });
-      
+        type: actionTypes.SET_ERRORS,
+        payload: []
+      });
     } catch (error) {
       dispatch({
-       type: actionTypes.SET_ERRORS,
-       payload: error.response.data
-     });
+        type: actionTypes.SET_ERRORS,
+        payload: error.response.data
+      });
     }
   };
 };
 
 //will delete the whole user obj
 export const logout = () => {
-  
   setAuthToken();
   return setCurrentUser();
 };
