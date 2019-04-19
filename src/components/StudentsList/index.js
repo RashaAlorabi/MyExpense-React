@@ -13,18 +13,16 @@ class StudentsList extends Component {
     if (this.props.loading) {
       studentRow = <div />;
     } else {
-      studentRow = this.props.students.map(student => (
-        <StudentRow key={student.id} student={student} />
-      ));
+      studentRow = this.props.students
+        .filter(
+          student => student.grade === `Grade ${this.props.match.params.Grade}`
+        )
+        .map(student => <StudentRow key={student.id} student={student} />);
     }
     return (
       <div class="scrollbar scrollbar-lady-lips">
         <div class="force-overflow" />
 
-        <div>List of student</div>
-        <Link to={"/add/student"}>
-          <td>add student</td>
-        </Link>
         <table className="table">
           <thead>
             <tr>

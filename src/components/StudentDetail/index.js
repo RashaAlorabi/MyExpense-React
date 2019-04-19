@@ -30,53 +30,64 @@ class StudentDetail extends Component {
       student = this.props.student;
       console.log("student detail", student.parent);
       return (
-        <div class="container">
-          <div class="row justify-content-md-center">
-            <div class="col-md-6">
-              <div className="card">
-                <img className="card-img-top" src={student.image} />
-              </div>
+        <div className="container card my-3">
+          <div className="row justify-content-md-center my-2">
+            <div className="col-3">
+              <img
+                style={{ height: "85%", width: "100%" }}
+                className="card-img-top my-3"
+                src={student.image}
+              />
             </div>
-            <div class="col-md-6">
-              <h5 className="card-title"> {student.name}</h5>
+
+            <div className="col-md-4 my-4 card">
+              <h5 className="card-title my-2"> {student.name}</h5>
               <p className="card-text">{student.grade}</p>
               <p className="card-text">Health:{student.health}</p>
               <p className="card-text">
                 Parent ID : {student.parent && student.parent.user.username}
               </p>
               <p className="card-text">Limit {student.limit}</p>
-              {/* <p className="card-text">Wallet {student.parent.wallet}</p> */}
             </div>
-            <Link to={`/update/student/${student.id}/`}>
+            {/* <p className="card-text">Wallet {student.parent.wallet}</p> */}
+          </div>
+          <div className="row justify-content-md-center my-2">
+            <div className="col-md-4 my-4 ">
+              <Link to={`/update/student/${student.id}/`}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.props.fetchStudentDetail(student.id)}
+                >
+                  <i className="fas fa-pencil-alt" />
+                </button>
+              </Link>
               <button
-                className="btn btn-primary"
-                onClick={() => this.props.fetchStudentDetail(student.id)}
+                className="btn btn-danger"
+                onClick={() =>
+                  this.props.deleteStudent(student.id, this.props.history)
+                }
               >
-                <i className="fas fa-pencil-alt" />
+                <i className="fas fa-trash-alt" />
               </button>
-            </Link>
-            <button
-              onClick={() =>
-                this.props.deleteStudent(student.id, this.props.history)
-              }
-            >
-              <i className="fas fa-trash-alt" />
-            </button>
-            <button onClick={() => this.setState({ QR: true })}>
-              <i className="fas fa-print" />
-            </button>
-            {this.state.QR && (
-              <div className={"row example-wrapper"}>
-                <div className={"col-xs-12 col-md-6 example-col"}>
-                  <QRCode
-                    value={`http://localhost:3000/student/${student.id}/`}
-                    errorCorrection={"Q"}
-                    color={"#67a814"}
-                    size={120}
-                  />
+              <button
+                className="btn btn-success"
+                onClick={() => this.setState({ QR: true })}
+              >
+                <i className="fas fa-print" />
+              </button>
+              {this.state.QR && (
+                <div className={"row example-wrapper"}>
+                  <div className={"col-xs-12 col-md-6 example-col"}>
+                    <QRCode
+                      value={`http://localhost:3000/student/${student.id}/`}
+                      errorCorrection={"Q"}
+                      color={"#67a814"}
+                      size={120}
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       );
