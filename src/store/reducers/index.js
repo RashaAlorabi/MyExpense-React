@@ -10,7 +10,7 @@ import studentReducer from "./studentReducer";
 // Combining the reducers
 export default combineReducers({
   auth: authReducer,
-  errors: errorReducer,
+  errorReducer: errorReducer,
   studentReducer: studentReducer,
   parents: parentsReducer,
   items: itemReducer

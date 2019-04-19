@@ -7,9 +7,7 @@ class StudentsList extends Component {
   componentDidMount() {
     this.props.fetchStudentsList();
   }
-  state = {
-    id: 0
-  };
+
   render() {
     let studentRow;
     if (this.props.loading) {
@@ -20,18 +18,19 @@ class StudentsList extends Component {
       ));
     }
     return (
-      <div>
+      <div class="scrollbar scrollbar-lady-lips">
+        <div class="force-overflow" />
+
         <div>List of student</div>
         <Link to={"/add/student"}>
           <td>add student</td>
         </Link>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Grade </th>
-              <th scope="col">Card </th>
             </tr>
           </thead>
           {studentRow}
@@ -43,8 +42,8 @@ class StudentsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.studentReducer.loading,
-    students: state.studentReducer.students
+    loading: state.studentReducer.loading
+    // students: state.studentReducer.students
   };
 };
 

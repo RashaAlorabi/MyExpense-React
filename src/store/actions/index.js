@@ -14,4 +14,4 @@ export {
 } from "./studentAction";
 
 export { checkForExpiredToken, login, logout } from "./authentication";
-export { resetErrors } from "./errors";
+export { resetErrors, setErrors } from "./errors";

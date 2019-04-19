@@ -57,7 +57,7 @@ export const login = (userData, history) => {
         type: actionTypes.SET_ERRORS,
         payload: []
       });
-      history.push("/Parents");
+      history.push("/students");
     } catch (error) {
       dispatch({
         type: actionTypes.SET_ERRORS,
