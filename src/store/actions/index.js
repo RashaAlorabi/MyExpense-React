@@ -1,10 +1,17 @@
+
 export {
   fetchItems,
   addItem,
   updateItem,
   deleteItem,
+  fetchItemDetail,
   fetchCategories
 } from "./itemActions";
+
+export {
+  fetchSchool
+} from "./schoolProfile";
+
 export {
   fetchStudentsList,
   fetchStudentDetail,
@@ -14,4 +21,8 @@ export {
 } from "./studentAction";
 
 export { checkForExpiredToken, login, logout } from "./authentication";
+
 export { resetErrors, setErrors } from "./errors";
+
+
+
