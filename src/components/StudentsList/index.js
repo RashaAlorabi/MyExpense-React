@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/index";
 import StudentRow from "./StudentRow";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
+import Card from "../Card/Card";
+import "./style.css";
 class StudentsList extends Component {
   componentDidMount() {
     this.props.fetchStudentsList();
@@ -19,20 +22,38 @@ class StudentsList extends Component {
         )
         .map(student => <StudentRow key={student.id} student={student} />);
     }
-    return (
-      <div class="scrollbar scrollbar-lady-lips">
-        <div class="force-overflow" />
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Grade </th>
-            </tr>
-          </thead>
-          {studentRow}
-        </table>
+    return (
+      <div className="content">
+        <Container fluid>
+          <Row>
+            <Col md={12}>
+              <Card
+                title="قائمة الطلاب"
+                studentlist
+                ctTableResponsive
+                content={
+                  <Table striped hover>
+                    <thead>
+                      <tr>
+                        <th scope="col" className="th">
+                          المرحلة الدراسية{" "}
+                        </th>
+                        <th scope="col" className="th">
+                          اسم الطالب
+                        </th>
+                        <th scope="col" className="th">
+                          رقم الطالب
+                        </th>
+                      </tr>
+                    </thead>
+                    {studentRow}
+                  </Table>
+                }
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

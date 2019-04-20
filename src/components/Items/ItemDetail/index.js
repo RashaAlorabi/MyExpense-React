@@ -30,15 +30,18 @@ class index extends Component {
                     <h4>{item.price} ريال</h4>
                     <p>{item.description}</p>
                     <Link to={`/item/update/${item.id}`}>
-                      <button>تحديث المنتج</button>
+                      <button className="button">
+                        <i className="fas fa-pencil-alt" />
+                      </button>
                     </Link>
                     <Link to={"/items"}>
                       <button
                         onClick={() =>
                           this.props.deleteItem(item.id, this.props.history)
                         }
+                        className="button"
                       >
-                        حذف المنتج
+                        <i className="fas fa-trash-alt" />
                       </button>
                     </Link>
                   </div>

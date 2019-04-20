@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions/index";
+import { Container, Row, Col } from "react-bootstrap";
+import Card from "../Card/Card";
 import style from "./style.css";
 class StudentForm extends Component {
   state = {
@@ -60,143 +62,112 @@ class StudentForm extends Component {
       </option>
     ));
     return (
-      <div className="wrapper wrapper--w680 my-3">
-        <div className="card card-4">
-          <div className="card-body">
-            <h2 className="title">Registration Form</h2>
-            <form onSubmit={this.submitStudent}>
-              {!!errors.length && (
-                <div className="alert alert-danger" role="alert">
-                  {errors.map(error => (
-                    <p key={error}>{error}</p>
-                  ))}
-                </div>
-              )}
-              <div className="row row-space">
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label"> Parent ID</label>
-                    <div className="input-group-icon">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="parent_id"
-                        placeholder="ID"
-                        value={this.state.parent_id}
-                        onChange={this.textChangeHandler}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label">Parent Email</label>
-                    <div className="input-group-icon">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.textChangeHandler}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className="content">
+        <Container fluid>
+          <Row className="row mt-">
+            <Col md={12}>
+              <Card
+                title="تسجيل طالب"
+                addstudent
+                content={
+                  <Row>
+                    <div className="wrapper wrapper--w680 my-3">
+                      <div className="card card-4">
+                        <div className="card-body">
+                          <form onSubmit={this.submitStudent}>
+                            {!!errors.length && (
+                              <div className="alert alert-danger" role="alert">
+                                {errors.map(error => (
+                                  <p key={error}>{error}</p>
+                                ))}
+                              </div>
+                            )}
 
-              <div className="row row-space">
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label"> Student Name</label>
-                    <div className="input-group-icon">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="name"
-                        value={this.state.name}
-                        placeholder="Name"
-                        onChange={this.textChangeHandler}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label">Grade</label>
-                    <div className="input-group-icon">
-                      <select
-                        className="form-control"
-                        name="grade"
-                        placeholder="Grade"
-                        onChange={this.textChangeHandler}
-                        value={this.state.grade}
-                      >
-                        {grades}
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                            <label className="label">رقم هوية ولي الأمر</label>
 
-              <div className="row row-space">
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label"> Daily Limit</label>
-                    <div className="input-group-icon">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="limit"
-                        placeholder="Limit"
-                        value={this.state.limit}
-                        onChange={this.textChangeHandler}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label">Student Health</label>
-                    <div className="input-group-icon">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="health"
-                        placeholder="Health"
-                        value={this.state.health}
-                        onChange={this.textChangeHandler}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="parent_id"
+                              value={this.state.parent_id}
+                              onChange={this.textChangeHandler}
+                            />
 
-              <div className="row row-space">
-                <div className="col-6">
-                  <div className="input-group">
-                    <label className="label">Picture</label>
-                    <div className="input-group-icon">
-                      <input
-                        type="file"
-                        className="form-control"
-                        name="image_file"
-                        placeholder="Pic"
-                        onChange={this.onImageChange}
-                        id="inputFileToLoad"
-                      />
+                            <label className="label">بريد ولي الأمر</label>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="email"
+                              value={this.state.email}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">اسم الطالب رباعي</label>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="name"
+                              value={this.state.name}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">المرحلة الدراسية</label>
+
+                            <select
+                              className="form-control"
+                              name="grade"
+                              onChange={this.textChangeHandler}
+                              value={this.state.grade}
+                            >
+                              {grades}
+                            </select>
+
+                            <label className="label">حد المصروف اليومي</label>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="limit"
+                              value={this.state.limit}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">الحالة الصحية</label>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="health"
+                              value={this.state.health}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">صورة الطالب</label>
+
+                            <input
+                              type="file"
+                              className="form-control"
+                              name="image_file"
+                              placeholder="Pic"
+                              onChange={this.onImageChange}
+                              id="inputFileToLoad"
+                            />
+
+                            <button className="btn btn-primary" type="submit">
+                              تسجيل
+                            </button>
+                          </form>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-t-15">
-                <button className="btn btn-primary" type="submit">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+                  </Row>
+                }
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

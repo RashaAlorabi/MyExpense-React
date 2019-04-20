@@ -32,18 +32,6 @@ class index extends Component {
           </Row>
         </Container>
       </div>
-      // <div className="container">
-      //   <div className="row mt-5">
-      //     <div className="col-4 ">
-      //       <Link to="/add/item">
-      //         <button>
-      //           <i className="fas fa-plus" /> إضافة منتج جديد
-      //         </button>
-      //       </Link>
-      //     </div>
-      //     <div className="col-8">{ItemCard_obj}</div>
-      //   </div>
-      // </div>
     );
   }
 }
@@ -56,32 +44,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(index);
-
-// class Icons extends Component {
-//   render() {
-//     return (
-//       <div className="content">
-//         <Grid fluid>
-//           <Row>
-//             <Col md={12}>
-//                   <Row>
-//                     <Col
-//                           lg={2}
-//                           md={3}
-//                           sm={4}
-//                           xs={6}
-//                           className="font-icon-list"
-//                           key={key}
-//                         >
-//                          {ItemCard_obj}
-//                         </Col>
-//                   </Row>
-//             </Col>
-//           </Row>
-//         </Grid>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Icons;

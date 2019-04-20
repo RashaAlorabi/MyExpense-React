@@ -69,6 +69,7 @@ export const addItem = (item, history) => {
       const res = await instance.post("create/item/", formData);
       const item = res.data;
       console.log("TCL: item", item);
+      dispatch(fetchItems());
       history.push("/items");
       dispatch({
         type: actionTypes.CREATE_ITEM,
@@ -83,23 +84,22 @@ export const addItem = (item, history) => {
 export const updateItem = (item, history) => {
   console.log("TCL: updateItem -> item.id", item.id);
   const formData = new FormData();
-  formData.append("id", item.id);
   formData.append("name", item.name);
   formData.append("price", item.price);
   formData.append("stock", item.stock);
   formData.append("description", item.description);
   formData.append("category", item.category);
-  if (item.image !== "") {
+  if (item.image_file !== "") {
     formData.append("image", item.image_file);
   }
   return async dispatch => {
     try {
       const res = await instance.put(`update/item/${item.id}/`, formData);
-      const item = res.data;
+      const itemObj = res.data;
       dispatch(fetchItems());
       dispatch({
         type: actionTypes.CREATE_ITEM,
-        payload: item
+        payload: itemObj
       });
       history.push("/items");
     } catch (error) {

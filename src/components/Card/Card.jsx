@@ -26,6 +26,11 @@ export class Card extends Component {
             "content" +
             (this.props.itemlist ? " all-icons" : "") +
             (this.props.itemdetail ? " all-icons" : "") +
+            (this.props.additem ? " all-icons" : "") +
+            (this.props.updateitem ? " all-icons" : "") +
+            (this.props.addstudent ? " all-icons" : "") +
+            (this.props.updatesudent ? " all-icons" : "") +
+            (this.props.studentlist ? " all-icons" : "") +
             (this.props.ctTableFullWidth ? " table-full-width" : "") +
             (this.props.ctTableResponsive ? " table-responsive" : "") +
             (this.props.ctTableUpgrade ? " table-upgrade" : "")
