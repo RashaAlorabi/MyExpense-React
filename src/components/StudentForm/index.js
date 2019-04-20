@@ -113,7 +113,12 @@ class StudentForm extends Component {
                               onChange={this.textChangeHandler}
                             />
 
-                            <label className="label">المرحلة الدراسية</label>
+                            <label
+                              htmlFor="exampleFormControlSelect1"
+                              className="label"
+                            >
+                              المرحلة الدراسية
+                            </label>
 
                             <select
                               className="form-control"
