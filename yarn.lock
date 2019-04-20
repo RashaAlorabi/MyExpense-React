@@ -8121,6 +8121,11 @@ react-app-polyfill@^0.2.2:
     raf "3.4.1"
     whatwg-fetch "3.0.0"
 
+react-background-image@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-background-image/-/react-background-image-1.2.0.tgz#8182c385d4eb2d9c5b017e3ed4ac8e6a045c6742"
+  integrity sha512-DmDF5xejbBmcgfr5OoIZaUsyyTrZGuj+AuxZYT/oje9LOUCw+IatzwKbu/aJgLFETP3e65GFSB8f4/fM/DlD2A==
+
 react-bootstrap@^1.0.0-beta.8:
   version "1.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.8.tgz#88d545526abe61c591d4eb84abad82e7f432c111"

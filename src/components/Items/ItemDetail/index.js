@@ -1,10 +1,10 @@
-// React
 import React, { Component } from "react";
-// Reduc
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actionCreators from "../../../store/actions";
-
+import { Container, Row, Col } from "react-bootstrap";
+import Card from "../../Card/Card";
+import "./styles.css";
 class index extends Component {
   componentDidMount() {
     this.props.fetchItemDetail(this.props.match.params.itemId);
@@ -13,38 +13,40 @@ class index extends Component {
     const item = this.props.item;
 
     return (
-      <div>
-        <div>
-          <div>
-            <h5>{item.name}</h5>
-            <img className="card-img-top" src={item.image} alt="img" />
-            <div className="card-text" style={{ color: "#808080" }}>
-              {item.price} ريال
-              <h5>{item.description}</h5>
-              <footer className="blockquote-footer">
-                {item.stock > 0 ? (
-                  <div style={{ color: "green" }}>متوفر</div>
-                ) : (
-                  <div style={{ color: "red" }}>غير متوفر</div>
-                )}
-              </footer>
-            </div>
-            <Link to={`/item/update/${item.id}`}>
-              <button>
-                <i className="fas fa-plus" /> تحديث منتج
-              </button>
-            </Link>
-            <Link to={"/items"}>
-              <button
-                onClick={() =>
-                  this.props.deleteItem(item.id, this.props.history)
-                }
-              >
-                <i className="fas fa-trash-alt" /> حذف المنتج
-              </button>
-            </Link>
-          </div>
-        </div>
+      <div className="content">
+        <Container fluid>
+          <Row className="row mt-3">
+            <Card
+              title="تفاصيل المنتج"
+              itemdetail
+              content={
+                <Row>
+                  <div className="photo">
+                    <img src={item.image} className="image" />
+                  </div>
+
+                  <div className="description">
+                    <h4>{item.name}</h4>
+                    <h4>{item.price} ريال</h4>
+                    <p>{item.description}</p>
+                    <Link to={`/item/update/${item.id}`}>
+                      <button>تحديث المنتج</button>
+                    </Link>
+                    <Link to={"/items"}>
+                      <button
+                        onClick={() =>
+                          this.props.deleteItem(item.id, this.props.history)
+                        }
+                      >
+                        حذف المنتج
+                      </button>
+                    </Link>
+                  </div>
+                </Row>
+              }
+            />
+          </Row>
+        </Container>
       </div>
     );
   }

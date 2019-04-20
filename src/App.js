@@ -9,7 +9,7 @@ import SidNav from "./components/SidNav";
 import AddItem from "./components/Items/AddItem";
 import UpdateItem from "./components/Items/UpdateItem";
 import ItemDetail from "./components/Items/ItemDetail";
-
+import pattern from "../src/assets/img/pattern.jpg";
 
 import * as actionCreators from "./store/actions/index";
 import { connect } from "react-redux";
@@ -20,30 +20,35 @@ import StudentsList from "./components/StudentsList";
 import StudentDetail from "./components/StudentDetail";
 import StudentForm from "./components/StudentForm";
 import StudentUpdate from "./components/StudentUpdate";
+import pic2 from "./assets/img/pic2.png";
 
 class App extends Component {
   async componentDidMount() {
     await this.props.checkForExpiredToken();
-    await this.props.fetchSchool()
+    await this.props.fetchSchool();
     this.props.fetchStudentsList();
     this.props.fetchItems();
     this.props.fetchCategories();
   }
   render() {
     return (
-      <div>
-
-        <Navbar/>
+      <div style={{ backgroundImage: `url(${pic2})`, backgroundSize: "cover" }}>
+        <Navbar />
         <div className="row">
           <div className="col-9 offset-1">
             <Switch>
               <Route path="/Home" component={Home} />
               <Route path="/Login" component={Login} />
-      
-              <Route path="/add/item" render={props => <AddItem {...props} />} />
+
+              <Route
+                path="/add/item"
+                render={props => <AddItem {...props} />}
+              />
               <Route
                 path="/item/update/:itemId"
-                render={props => <UpdateItem {...props} item={this.props.item} />}
+                render={props => (
+                  <UpdateItem {...props} item={this.props.item} />
+                )}
               />
               <Route
                 path="/item/detail/:itemId"
@@ -71,10 +76,14 @@ class App extends Component {
               <Redirect to="/Login" />
             </Switch>
           </div>
-          <div className="col-2 mt-2 border border-dark  mh-100" style={{backgroundColor: "rgba(68,80,88,0.7)"}}>
-            <SidNav/>
+          <div
+            className="col-2 mt-0 mh-100"
+            // style={{ backgroundColor: "rgb(245, 246, 241)" }}
+            style={{ backgroundImage: `url(${pic2})` }}
+          >
+            <SidNav />
           </div>
-        </div>    
+        </div>
       </div>
     );
   }
@@ -90,13 +99,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSchool: () => dispatch(actionCreators.fetchSchool()),
-    
+
     checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken()),
 
     fetchItems: () => dispatch(actionCreators.fetchItems()),
     fetchCategories: () => dispatch(actionCreators.fetchCategories()),
-    
-    fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList()),
+
+    fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
   };
 };
 export default withRouter(

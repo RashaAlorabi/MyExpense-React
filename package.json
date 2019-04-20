@@ -12,6 +12,7 @@
     "jwt-decode": "^2.2.0",
     "qrcode.react": "^0.9.3",
     "react": "^16.8.6",
+    "react-background-image": "^1.2.0",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
