@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   students: [],
+  filteredStudent: [],
   student: {},
   loading: true
 };
@@ -13,6 +14,7 @@ const classReducer = (state = initialState, action) => {
       return {
         ...state,
         students: action.payload,
+        filteredStudent: action.payload,
         loading: false
       };
     case actionTypes.FETCH_STUDENT_DETAIL:
@@ -27,6 +29,7 @@ const classReducer = (state = initialState, action) => {
       return {
         ...state,
         students: state.students.concat(action.payload),
+        filteredStudent: state.students.concat(action.payload),
         loading: false
       };
     case actionTypes.STUDENT_UPDATE:
@@ -36,6 +39,7 @@ const classReducer = (state = initialState, action) => {
       return {
         ...state,
         students: [...state.students],
+        filteredStudent: [...state.students],
         loading: false
       };
     case actionTypes.STUDENT_DELETE:
@@ -46,7 +50,15 @@ const classReducer = (state = initialState, action) => {
       return {
         ...state,
         students: [...newStudentList],
+        filteredStudent: [...newStudentList],
         loading: false
+      };
+    case actionTypes.FILTER_STUDENTS:
+      return {
+        ...state,
+        filteredStudent: [...state.students].filter(student =>
+          student.grade.includes("Grade" + action.payload)
+        )
       };
     default:
       return state;
