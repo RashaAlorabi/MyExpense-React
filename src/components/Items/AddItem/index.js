@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 import CategoryOption from "./CategoryOption";
-import * as actionCreatorsCh from "../../../store/actions/authentication";
-
+import { Container, Row, Col } from "react-bootstrap";
+import Card from "../../Card/Card";
+import "./styles.css";
 class index extends Component {
   state = {
     name: "",
@@ -53,88 +54,99 @@ class index extends Component {
       ));
     }
     return (
-      <div className="container">
-        <div className="mt-5 mb-5">
-          <p>إضافة منتج جديد</p>
-          <form onSubmit={this.submitItem}>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">اسم المنتج</span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                value={this.state.name}
-                onChange={this.onInputChange}
-              />
-            </div>
+      <div className="content">
+        <Container fluid>
+          <Row className="row mt-">
+            <Col md={12}>
+              <Card
+                title="إضافة منتج جديد"
+                additem
+                content={
+                  <Row>
+                    <div className="wrapper wrapper--w680 my-3">
+                      <div className="card card-4">
+                        <div className="card-body">
+                          <form onSubmit={this.submitItem}>
+                            <label className="label">اسم المنتج</label>
 
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">سعر المنتج</span>
-              </div>
-              <input
-                type="number"
-                className="form-control"
-                name="price"
-                value={this.state.price}
-                onChange={this.onInputChange}
-              />
-            </div>
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="name"
+                              value={this.state.name}
+                              onChange={this.onInputChange}
+                            />
 
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">الكمية المتوفرة</span>
-              </div>
-              <input
-                type="number"
-                className="form-control"
-                name="stock"
-                value={this.state.stock}
-                onChange={this.onInputChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleFormControlSelect1">صنف المنتج</label>
-              <select
-                className="form-control"
-                onChange={this.onInputChange}
-                name="category"
-                value={this.state.category}
-              >
-                {category}
-              </select>
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">مكونات المنتج</span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                name="description"
-                value={this.state.description}
-                onChange={this.onInputChange}
-              />
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">صورة المنتج</span>
-              </div>
-              <input
-                type="file"
-                className="form-control"
-                name="image"
-                onChange={this.onImageChange}
-                id="inputFileToLoad"
-              />
+                            <label className="label">سعر المنتج</label>
 
-            </div>
+                            <input
+                              type="number"
+                              className="form-control"
+                              name="price"
+                              value={this.state.price}
+                              onChange={this.onInputChange}
+                            />
+                            <label className="label">الكمية المتوفرة</label>
 
-            <input type="submit" />
-          </form>
-        </div>
+                            <input
+                              type="number"
+                              className="form-control"
+                              name="stock"
+                              value={this.state.stock}
+                              onChange={this.onInputChange}
+                            />
+
+                            <label
+                              htmlFor="exampleFormControlSelect1"
+                              className="label"
+                            >
+                              صنف المنتج
+                            </label>
+                            <select
+                              className="form-control"
+                              onChange={this.onInputChange}
+                              name="category"
+                              value={this.state.category}
+                            >
+                              <option className="form-control" value={"#"}>
+                                أختر الصنف
+                              </option>
+                              {category}
+                            </select>
+
+                            <label className="label">مكونات المنتج</label>
+
+                            <textarea
+                              type="text"
+                              className="form-control"
+                              name="description"
+                              value={this.state.description}
+                              onChange={this.onInputChange}
+                            />
+
+                            <label className="label">صورة المنتج</label>
+
+                            <input
+                              type="file"
+                              className="form-control"
+                              name="image"
+                              onChange={this.onImageChange}
+                              id="inputFileToLoad"
+                            />
+
+                            <button className="btn" type="submit">
+                              إضافة
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </Row>
+                }
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

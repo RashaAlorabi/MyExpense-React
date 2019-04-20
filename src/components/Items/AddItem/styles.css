@@ -1,0 +1,14 @@
+.label {
+  text-align: right;
+}
+
+.form-control {
+  text-align: right;
+}
+
+.btn {
+  background-color: #1a6d96;
+  color: #fcfcfc;
+  margin-top: 3%;
+  float: right;
+}

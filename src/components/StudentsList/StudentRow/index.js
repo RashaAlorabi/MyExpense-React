@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import "../style.css";
 import * as actionCreators from "../../../store/actions/index";
 
 import { Link, Redirect } from "react-router-dom";
@@ -18,13 +18,14 @@ class StudentRow extends Component {
 
     return (
       <tbody>
-        <tr>
-          <th scope="row">{id}</th>
-
+        <tr className="text-center">
+          <th className="th">{student.grade}</th>
           <Link to={`/student/${student.id}/`}>
-            <td>{student.name}</td>
+            <th className="tn">{student.name}</th>
           </Link>
-          <td>{student.grade}</td>
+          <th scope="row" className="th">
+            {id}
+          </th>
         </tr>
       </tbody>
     );

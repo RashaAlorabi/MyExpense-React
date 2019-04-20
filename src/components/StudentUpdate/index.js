@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { Container, Row, Col } from "react-bootstrap";
+import Card from "../Card/Card";
 import * as actionCreators from "../../store/actions/index";
 
 class StudentUpdate extends Component {
@@ -59,82 +60,91 @@ class StudentUpdate extends Component {
     const student = this.props.student;
     console.log("student update ---", student);
     return (
-      <div className="mt-5 p-2">
-        <form onSubmit={this.submitStudent}>
-          {!!errors.length && (
-            <div className="alert alert-danger" role="alert">
-              {errors.map(error => (
-                <p key={error}>{error}</p>
-              ))}
-            </div>
-          )}
+      <div className="content">
+        <Container fluid>
+          <Row className="row mt-">
+            <Col md={12}>
+              <Card
+                title="تحديث بيانات الطالب"
+                updatestudent
+                content={
+                  <Row>
+                    <div className="wrapper wrapper--w680 my-3">
+                      <div className="card card-4">
+                        <div className="card-body">
+                          <form onSubmit={this.submitStudent}>
+                            {!!errors.length && (
+                              <div className="alert alert-danger" role="alert">
+                                {errors.map(error => (
+                                  <p key={error}>{error}</p>
+                                ))}
+                              </div>
+                            )}
 
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Student name</span>
-            </div>
-            <input
-              type="text"
-              className="form-control"
-              name="name"
-              value={this.state.name}
-              onChange={this.textChangeHandler}
-            />
-          </div>
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Student grade</span>
-            </div>
-            <select
-              className="form-control"
-              name="grade"
-              value={this.state.name}
-              onChange={this.textChangeHandler}
-            >
-              {grades}
-            </select>
-          </div>
+                            <label className="label">اسم الطالب رباعي</label>
 
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Student expense limit</span>
-            </div>
-            <input
-              type="text"
-              className="form-control"
-              name="limit"
-              value={this.state.limit}
-              onChange={this.textChangeHandler}
-            />
-          </div>
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Student health</span>
-            </div>
-            <input
-              type="text"
-              className="form-control"
-              name="health"
-              value={this.state.health}
-              onChange={this.textChangeHandler}
-            />
-          </div>
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Student image</span>
-            </div>
-            <input
-              type="file"
-              className="form-control"
-              name="image_file"
-              onChange={this.onImageChange}
-              id="inputFileToLoad"
-            />
-          </div>
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
-        </form>
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="name"
+                              value={this.state.name}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">المرحلة الدراسية</label>
+
+                            <select
+                              className="form-control"
+                              name="grade"
+                              value={this.state.name}
+                              onChange={this.textChangeHandler}
+                            >
+                              {grades}
+                            </select>
+
+                            <label className="label">حد المصروف اليومي</label>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="limit"
+                              value={this.state.limit}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">الحالة الصحية</label>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="health"
+                              value={this.state.health}
+                              onChange={this.textChangeHandler}
+                            />
+
+                            <label className="label">صورة الطالب</label>
+
+                            <input
+                              type="file"
+                              className="form-control"
+                              name="image_file"
+                              onChange={this.onImageChange}
+                              id="inputFileToLoad"
+                            />
+
+                            <button className="btn btn-primary" type="submit">
+                              تحديث
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </Row>
+                }
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

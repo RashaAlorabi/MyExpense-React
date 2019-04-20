@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import "./styles.css";
+
 class CategoryOption extends Component {
   render() {
     return (
-      <option value={this.props.category.id}>{this.props.category.name}</option>
+      <option className="form-control" value={this.props.category.id}>
+        {this.props.category.name}
+      </option>
     );
   }
 }
