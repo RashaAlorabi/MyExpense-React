@@ -11,13 +11,16 @@ class StudentsList extends Component {
     id: 0
   };
   render() {
+    let { students , loading} = this.props.studentReducer
     let studentRow;
-    if (this.props.loading) {
+    if (loading) {
       studentRow = <div />;
     } else {
-      studentRow = this.props.students.map(student => (
+      console.log("students ==> ", students)
+      studentRow = students.filter(student => student.grade === `Grade ${this.props.match.params.Grade}`).map(student => (
         <StudentRow key={student.id} student={student} />
       ));
+      console.log("studentRow ==> ", studentRow)
     }
     return (
       <div>
@@ -43,8 +46,8 @@ class StudentsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.studentReducer.loading,
-    students: state.studentReducer.students
+    loading: state.studentReducer,
+    studentReducer: state.studentReducer
   };
 };
 

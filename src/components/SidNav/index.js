@@ -18,22 +18,22 @@ class index extends Component {
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="btn btn-lg btn-light btn-block dropdown-toggle">قائمة الطلاب</a>
               <ul className="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                  <Link to="/students:1" className="my-2 btn btn-lg btn-light btn-block">الصف الاول</Link>
+                  <Link to="/students1" className="my-2 btn btn-lg btn-light btn-block">الصف الاول</Link>
                 </li>
                 <li>
-                  <Link to="/students:2" className="my-2 btn btn-lg btn-light btn-block">الصف الثاني</Link>
+                  <Link to="/students2" className="my-2 btn btn-lg btn-light btn-block">الصف الثاني</Link>
                 </li>
                 <li>
-                  <Link to="/students:3" className="my-2 btn btn-lg btn-light btn-block">الصف الثالث</Link>
+                  <Link to="/students3" className="my-2 btn btn-lg btn-light btn-block">الصف الثالث</Link>
                 </li>
                 <li>
-                  <Link to="/students:4" className="my-2 btn btn-lg btn-light btn-block">الصف الرابع</Link>
+                  <Link to="/students4" className="my-2 btn btn-lg btn-light btn-block">الصف الرابع</Link>
                 </li>
                 <li>
-                  <Link to="/students:5" className="my-2 btn btn-lg btn-light btn-block">الصف الخامس</Link>
+                  <Link to="/students5" className="my-2 btn btn-lg btn-light btn-block">الصف الخامس</Link>
                 </li>
                 <li>
-                  <Link to="/students:6" className="my-2 btn btn-lg btn-light btn-block">الصف السادس</Link>
+                  <Link to="/students6" className="my-2 btn btn-lg btn-light btn-block">الصف السادس</Link>
                 </li>
               </ul>
           </ul>
