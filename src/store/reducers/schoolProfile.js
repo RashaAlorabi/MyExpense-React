@@ -1,5 +1,3 @@
-// ActionTypes
-
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
@@ -13,7 +11,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.payload,
-        loading:false
+        loading: false
       };
     default:
       return state;

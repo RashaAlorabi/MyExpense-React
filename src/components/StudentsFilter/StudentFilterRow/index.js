@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import * as actionCreators from "../../../store/actions/index";
-
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class StudentFilterRow extends Component {
   render() {
@@ -20,7 +17,6 @@ class StudentFilterRow extends Component {
       <tbody>
         <tr>
           <th scope="row">{id}</th>
-
           <Link to={`/student/${student.id}/`}>
             <td>{student.name}</td>
           </Link>
@@ -30,18 +26,11 @@ class StudentFilterRow extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    loading: state.studentReducer.loading
-  };
-};
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchStudentDetail: studentID =>
-//       dispatch(actionCreators.fetchStudentDetail(studentID))
-//   };
-// };
+const mapStateToProps = state => ({
+  loading: state.studentReducer.loading
+});
+
 export default connect(
   mapStateToProps,
   null

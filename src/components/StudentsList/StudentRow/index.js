@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "../style.css";
-import * as actionCreators from "../../../store/actions/index";
-
-import { Link, Redirect } from "react-router-dom";
 
 class StudentRow extends Component {
   render() {
     let student, id;
-
     if (this.props.loading) {
       student = <div />;
     } else {
@@ -31,18 +28,11 @@ class StudentRow extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    loading: state.studentReducer.loading
-  };
-};
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchStudentDetail: studentID =>
-//       dispatch(actionCreators.fetchStudentDetail(studentID))
-//   };
-// };
+const mapStateToProps = state => ({
+  loading: state.studentReducer.loading
+});
+
 export default connect(
   mapStateToProps,
   null

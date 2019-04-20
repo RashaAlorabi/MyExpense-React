@@ -1,6 +1,4 @@
-// API Requests
 import axios from "axios";
-// ActionTypes
 import * as actionTypes from "./actionTypes";
 
 const instance = axios.create({
@@ -12,7 +10,6 @@ export const fetchParents = () => {
     try {
       const res = await instance.get("/list/parent/");
       const parents = res.data;
-      console.log("parents ===> action ==> ", parents.parents);
       dispatch({
         type: actionTypes.FETCH_PARENTS,
         payload: parents.parents

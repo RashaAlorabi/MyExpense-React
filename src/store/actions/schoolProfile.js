@@ -1,6 +1,4 @@
-// API Requests
 import axios from "axios";
-// ActionTypes
 import * as actionTypes from "./actionTypes";
 
 const instance = axios.create({

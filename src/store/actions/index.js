@@ -7,8 +7,6 @@ export {
   fetchCategories
 } from "./itemActions";
 
-export { fetchSchool } from "./schoolProfile";
-
 export {
   fetchStudentsList,
   fetchStudentDetail,
@@ -18,6 +16,6 @@ export {
   filterStudentsList
 } from "./studentAction";
 
-export { checkForExpiredToken, login, logout } from "./authentication";
-
+export { fetchSchool } from "./schoolProfile";
 export { resetErrors, setErrors } from "./errors";
+export { checkForExpiredToken, login, logout } from "./authentication";

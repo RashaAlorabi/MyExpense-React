@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
 
 import * as actionCreators from "../../store/actions/index";
-import { Container, Row, Col } from "react-bootstrap";
 import Card from "../Card/Card";
-import style from "./style.css";
+import "./style.css";
+
 class StudentForm extends Component {
   state = {
     parent_id: "",
@@ -23,19 +24,18 @@ class StudentForm extends Component {
   }
 
   submitStudent = event => {
-    event.preventDefault(); // privent refrech
+    event.preventDefault();
     this.props.addStudent(this.state, this.props.history);
   };
 
   textChangeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   onImageChange = () => {
     let filesSelected = document.getElementById("inputFileToLoad").files;
-    console.log("image slected", filesSelected);
     if (filesSelected.length > 0) {
       let fileToLoad = filesSelected[0];
-      console.log("image slected 34", fileToLoad);
       this.setState({
         image_file: fileToLoad,
         alertUpload: true,
@@ -48,7 +48,6 @@ class StudentForm extends Component {
 
   render() {
     const errors = this.props.errors;
-    console.log(this.state.image);
     let grades = [
       "Grade 1",
       "Grade 2",
@@ -61,10 +60,11 @@ class StudentForm extends Component {
         {grade}
       </option>
     ));
+
     return (
       <div className="content">
         <Container fluid>
-          <Row className="row mt-">
+          <Row>
             <Col md={12}>
               <Card
                 title="تسجيل طالب"
@@ -173,20 +173,16 @@ class StudentForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    errors: state.errorReducer.errors,
-    user: state.auth.user
-  };
-};
+const mapStateToProps = state => ({
+  errors: state.errorReducer.errors,
+  user: state.auth.user
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addStudent: (studentData, history) =>
-      dispatch(actionCreators.addStudent(studentData, history)),
-    resetErrors: () => dispatch(actionCreators.resetErrors())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  addStudent: (studentData, history) =>
+    dispatch(actionCreators.addStudent(studentData, history)),
+  resetErrors: () => dispatch(actionCreators.resetErrors())
+});
 
 export default connect(
   mapStateToProps,

@@ -1,6 +1,4 @@
-// API Requests
 import axios from "axios";
-// ActionTypes
 import * as actionTypes from "./actionTypes";
 
 const instance = axios.create({
@@ -27,8 +25,6 @@ export const fetchCategories = () => {
     try {
       let res = await instance.get("category/");
       const categoies = res.data;
-      console.log("TCL: fetchCategories -> categoies", categoies);
-
       dispatch({
         type: actionTypes.FETCH_CATEGORIES,
         payload: categoies
@@ -44,7 +40,6 @@ export const fetchItemDetail = itemID => {
     try {
       const res = await instance.get(`item/detail/${itemID}/`);
       const item = res.data;
-      console.log("action detail item", item);
       dispatch({
         type: actionTypes.FETCH_ITEM_DETAIL,
         payload: item
@@ -56,7 +51,6 @@ export const fetchItemDetail = itemID => {
 };
 
 export const addItem = (item, history) => {
-  console.log("addItem ===> ", addItem);
   const formData = new FormData();
   formData.append("name", item.name);
   formData.append("price", item.price);
@@ -70,7 +64,6 @@ export const addItem = (item, history) => {
     try {
       const res = await instance.post("create/item/", formData);
       const item = res.data;
-      console.log("TCL: item", item);
       dispatch(fetchItems());
       history.push("/items");
       dispatch({
@@ -84,7 +77,6 @@ export const addItem = (item, history) => {
 };
 
 export const updateItem = (item, history) => {
-  console.log("TCL: updateItem -> item.id", item.id);
   const formData = new FormData();
   formData.append("name", item.name);
   formData.append("price", item.price);

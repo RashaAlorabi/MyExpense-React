@@ -1,20 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import Login from "./components/Authintication";
+import * as actionCreators from "./store/actions/index";
+import "./App.css";
 
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
 import SidNav from "./components/SidNav";
+import Home from "./components/Home";
+import Login from "./components/Authintication";
 
+import Items from "./components/Items";
 import AddItem from "./components/Items/AddItem";
 import UpdateItem from "./components/Items/UpdateItem";
 import ItemDetail from "./components/Items/ItemDetail";
-import pattern from "../src/assets/img/pattern.jpg";
-
-import * as actionCreators from "./store/actions/index";
-import { connect } from "react-redux";
-
-import Items from "./components/Items";
 
 import StudentsList from "./components/StudentsList";
 import StudentDetail from "./components/StudentDetail";
@@ -32,7 +30,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div style={{ backgroundImage: `url(${pic2})`, backgroundSize: "cover" }}>
+      <div style={{ backgroundImage: `url(${pic2})` }} className="body">
         <Navbar />
         <div className="row">
           <div className="col-9 offset-1">
@@ -78,36 +76,33 @@ class App extends Component {
           </div>
           <div
             className="col-2 mt-0 mh-100"
-            // style={{ backgroundColor: "rgb(245, 246, 241)" }}
             style={{ backgroundImage: `url(${pic2})` }}
           >
             <SidNav />
           </div>
         </div>
+
+        <footer className="footer">
+          <p> كافة الحقوق محفوظة لطلبة معسكر طويق © 2019م </p>
+        </footer>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    loading: state.studentReducer.loading,
-    students: state.studentReducer.students,
-    student: state.studentReducer.student
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchSchool: () => dispatch(actionCreators.fetchSchool()),
+const mapStateToProps = state => ({
+  loading: state.studentReducer.loading,
+  students: state.studentReducer.students,
+  student: state.studentReducer.student
+});
 
-    checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken()),
-
-    fetchItems: () => dispatch(actionCreators.fetchItems()),
-    fetchCategories: () => dispatch(actionCreators.fetchCategories()),
-
-    fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchSchool: () => dispatch(actionCreators.fetchSchool()),
+  checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken()),
+  fetchItems: () => dispatch(actionCreators.fetchItems()),
+  fetchCategories: () => dispatch(actionCreators.fetchCategories()),
+  fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
+});
 export default withRouter(
   connect(
     mapStateToProps,

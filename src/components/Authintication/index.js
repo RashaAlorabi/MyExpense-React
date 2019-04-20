@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import * as actionCreators from "../../store/actions/authentication";
 
 class Login extends Component {
@@ -9,15 +10,14 @@ class Login extends Component {
   };
 
   changeHandler = e => {
-    /* -- set UserName and Password in state --*/
     this.setState({ [e.target.name]: e.target.value });
   };
 
   submitHandler = e => {
-    /* -- Submet UserName and Password to actions --*/
     e.preventDefault();
     return this.props.login(this.state, this.props.history);
   };
+
   render() {
     const errors = this.props.errors;
     return (
@@ -68,18 +68,17 @@ class Login extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    user: state.auth.user,
-    errors: state.errorReducer.errors
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    login: (userData, history) =>
-      dispatch(actionCreators.login(userData, history))
-  };
-};
+
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  errors: state.errorReducer.errors
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: (userData, history) =>
+    dispatch(actionCreators.login(userData, history))
+});
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

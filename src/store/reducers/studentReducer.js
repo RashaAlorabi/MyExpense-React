@@ -18,14 +18,12 @@ const classReducer = (state = initialState, action) => {
         loading: false
       };
     case actionTypes.FETCH_STUDENT_DETAIL:
-      console.log("STUDENT ===> ", action.payload);
       return {
         ...state,
         student: action.payload,
         loading: false
       };
     case actionTypes.STUDENT_ADD:
-      console.log("student add ", action.payload);
       return {
         ...state,
         students: state.students.concat(action.payload),
@@ -34,7 +32,7 @@ const classReducer = (state = initialState, action) => {
       };
     case actionTypes.STUDENT_UPDATE:
       let updatedStudent = state.students.find(
-        student => student.id == action.payload.id
+        student => student.id === action.payload.id
       );
       return {
         ...state,

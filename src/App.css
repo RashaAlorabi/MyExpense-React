@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+.body {
+  background-size: auto;
+  height: auto;
+}
+
+.footer {
+  background-color: #fcfcfc;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}

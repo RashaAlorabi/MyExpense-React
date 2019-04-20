@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions/index";
+
 class index extends Component {
   render() {
     return (
@@ -179,18 +180,15 @@ class index extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    loading: state.studentReducer.loading,
-    student: state.studentReducer.student
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    filterStudentsList: grade =>
-      dispatch(actionCreators.filterStudentsList(grade))
-  };
-};
+const mapStateToProps = state => ({
+  loading: state.studentReducer.loading,
+  student: state.studentReducer.student
+});
+
+const mapDispatchToProps = dispatch => ({
+  filterStudentsList: grade =>
+    dispatch(actionCreators.filterStudentsList(grade))
+});
 
 export default connect(
   mapStateToProps,
