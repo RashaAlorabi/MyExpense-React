@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_CATEGORIES:
       return {
         ...state,
-        categories: action.payload
+        categories: action.payload.schoolcategories
       };
     default:
       return state;
