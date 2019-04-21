@@ -20,57 +20,69 @@ class Login extends Component {
 
   render() {
     const errors = this.props.errors;
-    return (
-      <div className="container">
-        <br />
-        <div className="text-center col-12">
-          {!!errors.length && (
-            <div>
-              {errors.map(error => (
-                <p key={error}>{error}</p>
-              ))}
-              <button type="button">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          )}
-          <h1>تسجيل دخول</h1>
-          <form onSubmit={this.submitHandler}>
-            <div className="form-group text-right">
-              <h5 className="ml-2">اسم المستخدم</h5>
-              <input
-                type="text"
-                placeholder="Username"
-                name="username"
-                onChange={this.changeHandler}
-                className="form-control rounded-pill"
-              />
-            </div>
-            <div className="form-group text-right">
-              <h5 className="ml-2">كلمة المرور</h5>
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={this.changeHandler}
-                className="form-control rounded-pill"
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn btn-primary rounded-pill btn-lg"
-            >
-              دخول
-            </button>
-          </form>
+    let { user } = this.props.auth;
+    if (user) {
+      return (
+        <div className="container">
+          <div className="text-center col-12">
+              أنت مسجل دخول 
+          </div>
         </div>
-      </div>
-    );
+      ) 
+    }else{
+      return (
+        <div className="container">
+          <br />
+          <div className="text-center col-12">
+            {!!errors.length && (
+              <div>
+                {errors.map(error => (
+                  <p key={error}>{error}</p>
+                ))}
+                <button type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            )}
+            <h1>تسجيل دخول</h1>
+            <form onSubmit={this.submitHandler}>
+              <div className="form-group text-right">
+                <h5 className="ml-2">اسم المستخدم</h5>
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  onChange={this.changeHandler}
+                  className="form-control rounded-pill"
+                />
+              </div>
+              <div className="form-group text-right">
+                <h5 className="ml-2">كلمة المرور</h5>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  onChange={this.changeHandler}
+                  className="form-control rounded-pill"
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary rounded-pill btn-lg"
+              >
+                دخول
+              </button>
+            </form>
+          </div>
+        </div>
+      );
+    }
+    
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.auth.user,
+  auth: state.auth,
   errors: state.errorReducer.errors
 });
 

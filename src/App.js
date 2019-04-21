@@ -28,6 +28,15 @@ class App extends Component {
     this.props.fetchItems();
     this.props.fetchCategories();
   }
+  async componentDidUpdate(prevProps){
+    if (this.props.auth.user !== prevProps.auth.user){
+      // await this.props.checkForExpiredToken();
+      await this.props.fetchSchool();
+      await this.props.fetchItems();
+      await this.props.fetchStudentsList();
+      await this.props.fetchCategories();
+    }
+  }
   render() {
     return (
       <div style={{ backgroundImage: `url(${pic2})` }} className="body">
@@ -83,7 +92,7 @@ class App extends Component {
         </div>
 
         <footer className="footer">
-          <p> كافة الحقوق محفوظة لطلبة معسكر طويق © 2019م </p>
+          <p> كافة الحقوق محفوظة لمصروفي © 2019م </p>
         </footer>
       </div>
     );
@@ -93,7 +102,8 @@ class App extends Component {
 const mapStateToProps = state => ({
   loading: state.studentReducer.loading,
   students: state.studentReducer.students,
-  student: state.studentReducer.student
+  student: state.studentReducer.student,
+  auth: state.auth,
 });
 
 const mapDispatchToProps = dispatch => ({

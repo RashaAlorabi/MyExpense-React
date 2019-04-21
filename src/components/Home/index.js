@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import Login from "../Authintication/index"
 import * as actionCreators from "../../store/actions";
 
 class index extends React.Component {
@@ -68,7 +68,7 @@ class index extends React.Component {
         );
       }
     } else {
-      return <div />;
+      return <Login/>
     }
   }
 }

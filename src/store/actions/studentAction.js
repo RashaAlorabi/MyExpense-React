@@ -15,7 +15,7 @@ export const filterStudentsList = grade => {
 export const fetchStudentsList = () => {
   return async dispatch => {
     try {
-      const res = await instance.get("students/list/");
+      const res = await instance.get("school/students/");
       const studentsList = res.data;
       dispatch({
         type: actionTypes.FETCH_ALL_STUDENTS,

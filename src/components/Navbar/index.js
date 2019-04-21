@@ -5,29 +5,19 @@ import { Link } from "react-router-dom";
 import * as actionCreators from "../../store/actions";
 
 class index extends React.Component {
+  componentDidUpdate(){
+    
+  }
   render() {
-    let { profile, loading } = this.props.school;
+    let { profile, } = this.props.school;
     let { user } = this.props.auth;
-    if (user) {
-      if (loading) {
-        return (
-          <nav
-            className="navbar"
-            style={{ backgroundColor: "rgb(245, 246, 241)" }}
-          >
-            <div>
-              <h1 className="navbar-brand">{`مصروفي`}</h1>
-            </div>
-          </nav>
-        );
-      } else {
-        return (
-          <nav
-            className="navbar navbar-light"
-            style={{ backgroundColor: "rgb(251, 251, 251)" }}
-          >
-            <div>
-              <span
+    return (
+      <nav
+          className="navbar"
+          style={{ backgroundColor: "rgb(245, 246, 241)" }}
+        >
+          <div>
+            { user ? <span
                 className="btn btn-light"
                 style={{ backgroundColor: "rgb(27, 109, 150)" }}
                 onClick={() => this.props.logout()}
@@ -39,46 +29,32 @@ class index extends React.Component {
                   {" "}
                   تسجيل خروج
                 </i>
-              </span>
-            </div>
-            <div>
-              <h1
-                className="navbar-brand"
-                style={{ color: "rgb(26, 109, 150)" }}
-              >{`مصروفي ${profile.name}`}</h1>
-            </div>
-          </nav>
-        );
-      }
-    } else {
-      return (
-        <nav
-          className="navbar"
-          style={{ backgroundColor: "rgb(252, 252, 252)" }}
-        >
-          <div>
+              </span> 
+            : 
             <Link
-              to="/Login"
-              className="btn btn-light"
-              style={{ backgroundColor: "rgb(27, 109, 150)" }}
+            to="/Login"
+            className="btn btn-light"
+            style={{ backgroundColor: "rgb(27, 109, 150)" }}
+          >
+            <i
+              className="fas fa-sign-out-alt"
+              style={{ color: "rgb(245, 246, 241)" }}
             >
-              <i
-                className="fas fa-sign-out-alt"
-                style={{ color: "rgb(245, 246, 241)" }}
-              >
-                {" "}
-                تسجيل دخول
-              </i>
-            </Link>
+              {" "}
+              تسجيل دخول
+            </i>
+          </Link>
+            }
+              
           </div>
           <div>
-            <h1 className="navbar-brand">{`مصروفي`}</h1>
+            <h1 className="navbar-brand">{user ? `مصروفي ${profile && profile.name}`: "مصروفي"}</h1>
           </div>
-        </nav>
-      );
-    }
+      </nav> 
+    );
   }
 }
+
 const mapStateToProps = state => ({
   school: state.school,
   auth: state.auth
@@ -91,3 +67,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(index);
+
