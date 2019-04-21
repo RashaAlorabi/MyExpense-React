@@ -8,6 +8,7 @@ import Card from "../Card/Card";
 import * as actionCreators from "../../store/actions/index";
 import "./styles.css";
 
+//Move all in-line styling to a .css style sheet, then apply the styling rules here
 class StudentDetail extends Component {
   componentDidMount() {
     this.props.fetchStudentDetail(this.props.match.params.studentID);

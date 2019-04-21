@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions";
 
+//Move all in-line styling to a .css style sheet, then apply the styling rules here
 class index extends React.Component {
   render() {
     let { profile, loading } = this.props.school;

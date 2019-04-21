@@ -35,6 +35,7 @@ class App extends Component {
         <div className="row">
           <div className="col-9 offset-1">
             <Switch>
+              {/* Keep your path names lowercase */}
               <Route path="/Home" component={Home} />
               <Route path="/Login" component={Login} />
 
@@ -70,7 +71,7 @@ class App extends Component {
                   <StudentsList {...props} students={this.props.students} />
                 )}
               />
-
+              {/* Keep your path names lowercase */}
               <Redirect to="/Login" />
             </Switch>
           </div>
