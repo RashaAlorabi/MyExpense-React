@@ -9,10 +9,20 @@ import * as actionCreators from "../../store/actions/index";
 
 class StudentsList extends Component {
   componentDidMount() {
+    /*
+     * Aziz CR: it would make more sense to fetch students when
+     * the application loads instead of fetching every time we
+     * mount this component
+     */
     this.props.fetchStudentsList();
   }
 
   render() {
+    /*
+     * AzizCR: instead of setting studentRow to an empty div
+     * why don't you conditionally render the studentRow based on
+     * this.props.loading?
+     */
     let studentRow;
     if (this.props.loading) {
       studentRow = <div />;
@@ -48,6 +58,7 @@ class StudentsList extends Component {
                         </th>
                       </tr>
                     </thead>
+                    {/* conditional render would go here */}
                     {studentRow}
                   </Table>
                 }

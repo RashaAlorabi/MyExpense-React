@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 
 import * as actionCreators from "../../store/actions";
 
+/**
+ * AzizCR: Classes in JS and ESPECIALLY components in React should be upper cased.
+ */
 class index extends React.Component {
+  /**
+   * AzizCR: this render method can be heavily refactored and simplified
+   */
   render() {
     let { profile, loading } = this.props.school;
     let { user } = this.props.auth;

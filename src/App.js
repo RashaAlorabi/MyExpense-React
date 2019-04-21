@@ -34,6 +34,7 @@ class App extends Component {
         <Navbar />
         <div className="row">
           <div className="col-9 offset-1">
+            {/* AzizCR: I think there's a much better URL hierarchy that you could use. This is lazy UX. */}
             <Switch>
               <Route path="/Home" component={Home} />
               <Route path="/Login" component={Login} />
@@ -103,6 +104,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCategories: () => dispatch(actionCreators.fetchCategories()),
   fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
 });
+
 export default withRouter(
   connect(
     mapStateToProps,
