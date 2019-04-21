@@ -28,7 +28,7 @@ class StudentDetail extends Component {
       return (student = <div />);
     } else {
       student = this.props.student;
-      console.log("student detail", student.parent);
+      console.log("student detail", student);
       return (
         <div className="container card my-3">
           <div className="row justify-content-md-center my-2">
@@ -79,7 +79,9 @@ class StudentDetail extends Component {
                 <div className={"row example-wrapper"}>
                   <div className={"col-xs-12 col-md-6 example-col"}>
                     <QRCode
-                      value={`http://localhost:3000/student/${student.id}/`}
+                      value={`http://172.20.10.2:30/api/student/${
+                        student.id
+                      }/detail/`}
                       errorCorrection={"Q"}
                       color={"#67a814"}
                       size={120}
