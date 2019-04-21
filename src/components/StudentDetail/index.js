@@ -93,7 +93,7 @@ class StudentDetail extends Component {
                         <div>
                           {this.state.QR && (
                             <QRCode
-                              value={`http://localhost:3000/student/${
+                              value={`http://172.20.10.2:30/api"/student/${
                                 student.id
                               }/`}
                               errorCorrection={"Q"}

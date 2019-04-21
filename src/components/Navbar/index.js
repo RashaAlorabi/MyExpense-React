@@ -13,7 +13,7 @@ class index extends React.Component {
         return (
           <nav
             className="navbar"
-            style={{ backgroundColor: "rgb(245, 246, 241)" }}
+            style={{ backgroundColor: "rgb(26,109,150)" }}
           >
             <div>
               <h1 className="navbar-brand">{`مصروفي`}</h1>
@@ -24,7 +24,7 @@ class index extends React.Component {
         return (
           <nav
             className="navbar navbar-light"
-            style={{ backgroundColor: "rgb(251, 251, 251)" }}
+            style={{ backgroundColor: "rgb(26,109,150)" }}
           >
             <div>
               <span
@@ -44,7 +44,7 @@ class index extends React.Component {
             <div>
               <h1
                 className="navbar-brand"
-                style={{ color: "rgb(26, 109, 150)" }}
+                style={{ color: "white" }}
               >{`مصروفي ${profile.name}`}</h1>
             </div>
           </nav>
@@ -52,10 +52,7 @@ class index extends React.Component {
       }
     } else {
       return (
-        <nav
-          className="navbar"
-          style={{ backgroundColor: "rgb(252, 252, 252)" }}
-        >
+        <nav className="navbar" style={{ backgroundColor: "rgb(26,109,150)" }}>
           <div>
             <Link
               to="/Login"
@@ -72,7 +69,10 @@ class index extends React.Component {
             </Link>
           </div>
           <div>
-            <h1 className="navbar-brand">{`مصروفي`}</h1>
+            <h1
+              style={{ color: "white" }}
+              className="navbar-brand"
+            >{`مصروفي`}</h1>
           </div>
         </nav>
       );
