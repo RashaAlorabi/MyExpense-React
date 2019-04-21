@@ -90,16 +90,18 @@ class StudentDetail extends Component {
                         >
                           <i className="fas fa-print" />
                         </button>
-                        {this.state.QR && (
-                          <QRCode
-                            value={`http://localhost:3000/student/${
-                              student.id
-                            }/`}
-                            errorCorrection={"Q"}
-                            color={"#67a814"}
-                            size={120}
-                          />
-                        )}
+                        <div>
+                          {this.state.QR && (
+                            <QRCode
+                              value={`http://localhost:3000/student/${
+                                student.id
+                              }/`}
+                              errorCorrection={"Q"}
+                              color={"#67a814"}
+                              size={120}
+                            />
+                          )}
+                        </div>
                       </div>
                     </Row>
                   }
