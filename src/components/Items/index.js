@@ -14,9 +14,7 @@ class index extends Component {
     const { loading, items } = this.props.items;
     let ItemCard_obj = [];
     if (loading) {
-      ItemCard_obj = items.items.map(item => (
-        <ItemCard key={items.id} item={item} />
-      ));
+      ItemCard_obj = items.map(item => <ItemCard key={items.id} item={item} />);
     }
     return (
       <div className="content">
