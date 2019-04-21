@@ -3,8 +3,15 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../style.css";
 
+/**
+ * AzizCR: consider making this a stateless component
+ */
 class StudentRow extends Component {
   render() {
+    /**
+     * AzizCR: You shouldn't need this.
+     * This should never happen!
+     */
     let student, id;
     if (this.props.loading) {
       student = <div />;
@@ -33,7 +40,4 @@ const mapStateToProps = state => ({
   loading: state.studentReducer.loading
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(StudentRow);
+export default connect(mapStateToProps)(StudentRow);

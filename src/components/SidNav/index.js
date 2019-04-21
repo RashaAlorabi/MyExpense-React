@@ -57,6 +57,7 @@ class index extends Component {
             >
               قائمة الطلاب
             </a>
+            {/* AzizCR: is there a way to make this UL dynamic */}
             <ul className="collapse list-unstyled" id="homeSubmenu">
               <li>
                 <Link
@@ -135,6 +136,7 @@ class index extends Component {
           </ul>
         </div>
         <div className="m-1">
+          {/* AzizCR: why is this an <a> tag? */}
           <a
             href="#ALMNTGAT"
             data-toggle="collapse"
