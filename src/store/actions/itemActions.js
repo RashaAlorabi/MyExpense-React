@@ -77,6 +77,7 @@ export const addItem = (item, history) => {
 };
 
 export const updateItem = (item, history) => {
+  console.log("TCL: updateItem -> item.id", item.id);
   const formData = new FormData();
   formData.append("name", item.name);
   formData.append("price", item.price);
@@ -91,11 +92,11 @@ export const updateItem = (item, history) => {
       const res = await instance.put(`update/item/${item.id}/`, formData);
       const itemObj = res.data;
       dispatch(fetchItems());
+      history.push("/items");
       dispatch({
         type: actionTypes.CREATE_ITEM,
         payload: itemObj
       });
-      history.push("/items");
     } catch (error) {
       console.log("Somthing went wrong with ", error);
     }

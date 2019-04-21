@@ -137,6 +137,9 @@ class UpdateItem extends Component {
                               name="category"
                               value={this.state.category}
                             >
+                              <option className="form-control" value={"#"}>
+                                أختر الصنف
+                              </option>
                               {category}
                             </select>
 

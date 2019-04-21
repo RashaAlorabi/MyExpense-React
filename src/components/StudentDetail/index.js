@@ -16,6 +16,15 @@ class StudentDetail extends Component {
     QR: false
   };
   render() {
+    // let student = {};
+    // if (
+    //   this.props.students.find(
+    //     student => student.id == this.props.match.params.studentID
+    //   )
+    // ) {
+    //   student = this.props.students.find(
+    //     student => student.id == this.props.match.params.studentID
+    //   );
     let student = {};
     if (this.props.loading) {
       return (student = <div />);
