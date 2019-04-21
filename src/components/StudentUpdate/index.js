@@ -105,6 +105,9 @@ class StudentUpdate extends Component {
                               value={this.state.name}
                               onChange={this.textChangeHandler}
                             >
+                              <option className="form-control" value={"#"}>
+                                المرحلة الدراسية
+                              </option>
                               {grades}
                             </select>
 
