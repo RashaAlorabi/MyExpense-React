@@ -31,20 +31,10 @@ export class Card extends Component {
             (this.props.addstudent ? " all-icons" : "") +
             (this.props.updatesudent ? " all-icons" : "") +
             (this.props.studentlist ? " all-icons" : "") +
-            (this.props.ctTableFullWidth ? " table-full-width" : "") +
-            (this.props.ctTableResponsive ? " table-responsive" : "") +
-            (this.props.ctTableUpgrade ? " table-upgrade" : "")
+            (this.props.studentdetail ? " all-icons" : "")
           }
         >
           {this.props.content}
-
-          <div className="footer">
-            {this.props.legend}
-            {this.props.stats != null ? <hr /> : ""}
-            <div className="stats">
-              <i className={this.props.statsIcon} /> {this.props.stats}
-            </div>
-          </div>
         </div>
       </div>
     );

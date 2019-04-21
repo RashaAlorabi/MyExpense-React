@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
+
 import * as actionCreators from "../../../store/actions/index";
 import CategoryOption from "./CategoryOption";
-import { Container, Row, Col } from "react-bootstrap";
 import Card from "../../Card/Card";
 import "./styles.css";
+
 class index extends Component {
   state = {
     name: "",
@@ -16,9 +18,11 @@ class index extends Component {
     image_file: "",
     alertUpload: false
   };
+
   componentDidMount() {
     this.props.fetchCategories();
   }
+
   submitItem = event => {
     event.preventDefault();
     this.props.addItem(this.state, this.props.history);
@@ -46,6 +50,7 @@ class index extends Component {
       fileReader.readAsDataURL(fileToLoad);
     }
   };
+
   render() {
     let category = this.props.categories;
     if (category) {

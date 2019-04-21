@@ -4,7 +4,6 @@ const initialState = {
   user: null
 };
 
-     /* -- get all info for loged in user  -- */
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_CURRENT_USER:

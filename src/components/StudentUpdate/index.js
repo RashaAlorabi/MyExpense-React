@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
+
 import Card from "../Card/Card";
 import * as actionCreators from "../../store/actions/index";
 
@@ -21,13 +22,14 @@ class StudentUpdate extends Component {
   }
 
   submitStudent = event => {
-    event.preventDefault(); // privent refrech
+    event.preventDefault();
     this.props.updateStudent(this.state, this.props.history);
   };
 
   textChangeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   onImageChange = () => {
     let filesSelected = document.getElementById("inputFileToLoad").files;
     console.log("image slected", filesSelected);
@@ -43,6 +45,7 @@ class StudentUpdate extends Component {
       fileReader.readAsDataURL(fileToLoad);
     }
   };
+
   render() {
     let grades = [
       "Grade 1",
@@ -58,7 +61,7 @@ class StudentUpdate extends Component {
     ));
     const errors = this.props.errors;
     const student = this.props.student;
-    console.log("student update ---", student);
+
     return (
       <div className="content">
         <Container fluid>
@@ -82,7 +85,6 @@ class StudentUpdate extends Component {
                             )}
 
                             <label className="label">اسم الطالب رباعي</label>
-
                             <input
                               type="text"
                               className="form-control"
@@ -91,8 +93,12 @@ class StudentUpdate extends Component {
                               onChange={this.textChangeHandler}
                             />
 
-                            <label className="label">المرحلة الدراسية</label>
-
+                            <label
+                              htmlFor="exampleFormControlSelect1"
+                              className="label"
+                            >
+                              المرحلة الدراسية
+                            </label>
                             <select
                               className="form-control"
                               name="grade"
@@ -103,7 +109,6 @@ class StudentUpdate extends Component {
                             </select>
 
                             <label className="label">حد المصروف اليومي</label>
-
                             <input
                               type="text"
                               className="form-control"
@@ -113,7 +118,6 @@ class StudentUpdate extends Component {
                             />
 
                             <label className="label">الحالة الصحية</label>
-
                             <input
                               type="text"
                               className="form-control"
@@ -123,7 +127,6 @@ class StudentUpdate extends Component {
                             />
 
                             <label className="label">صورة الطالب</label>
-
                             <input
                               type="file"
                               className="form-control"
@@ -150,20 +153,16 @@ class StudentUpdate extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    errors: state.errorReducer.errors,
-    student: state.studentReducer.student
-  };
-};
+const mapStateToProps = state => ({
+  errors: state.errorReducer.errors,
+  student: state.studentReducer.student
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    updateStudent: (studentData, history) =>
-      dispatch(actionCreators.updateStudent(studentData, history)),
-    resetErrors: () => dispatch(actionCreators.resetErrors())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  updateStudent: (studentData, history) =>
+    dispatch(actionCreators.updateStudent(studentData, history)),
+  resetErrors: () => dispatch(actionCreators.resetErrors())
+});
 
 export default connect(
   mapStateToProps,

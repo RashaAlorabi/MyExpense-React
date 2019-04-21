@@ -1,12 +1,12 @@
-// React
 import React, { Component } from "react";
-// Action Functions
-import * as actionCreators from "../../../store/actions";
-import CategoryOption from "../AddItem/CategoryOption";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
+
+import * as actionCreators from "../../../store/actions";
+import CategoryOption from "../AddItem/CategoryOption";
 import Card from "../../Card/Card";
 import "../styles.css";
+
 class UpdateItem extends Component {
   state = {
     id: this.props.item.id,
@@ -19,6 +19,7 @@ class UpdateItem extends Component {
     image_file: "",
     alertUpload: false
   };
+
   componentDidMount() {
     this.props.fetchCategories();
     this.props.item &&
@@ -45,7 +46,6 @@ class UpdateItem extends Component {
         category: this.props.item.category
       });
     }
-    // this.props.auth.user && this.props.fetchItems();
   }
 
   handleChange = event => {
@@ -72,9 +72,8 @@ class UpdateItem extends Component {
       fileReader.readAsDataURL(fileToLoad);
     }
   };
+
   render() {
-    const itemId = this.props.item.id;
-    console.log("TCL: UpdateItem -> render -> itemId", itemId);
     let category = this.props.categories;
     if (category) {
       category = this.props.categories.map(category => (
@@ -138,6 +137,9 @@ class UpdateItem extends Component {
                               name="category"
                               value={this.state.category}
                             >
+                              <option className="form-control" value={"#"}>
+                                أختر الصنف
+                              </option>
                               {category}
                             </select>
 
@@ -163,15 +165,6 @@ class UpdateItem extends Component {
                             <button className="btn" type="submit">
                               تحديث{" "}
                             </button>
-                            {/* 
-          <Link to="/items">
-            <button
-              className="btn btn-light "
-              style={{ color: "grey", margin: "10px" }}
-            >
-              رجوع
-            </button>
-          </Link> */}
                           </form>
                         </div>
                       </div>
@@ -187,17 +180,17 @@ class UpdateItem extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    item: state.items.item,
-    categories: state.items.categories
-  };
-};
+const mapStateToProps = state => ({
+  item: state.items.item,
+  categories: state.items.categories
+});
+
 const mapDispatchToProps = dispatch => ({
   updateItem: (item, history) =>
     dispatch(actionCreators.updateItem(item, history)),
   fetchCategories: () => dispatch(actionCreators.fetchCategories())
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

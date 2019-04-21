@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions";
 import { Link } from "react-router-dom";
 
+import * as actionCreators from "../../store/actions";
+
 class index extends React.Component {
-  componentDidUpdate() {}
   render() {
     let { profile, loading } = this.props.school;
     let { user } = this.props.auth;
@@ -54,7 +54,7 @@ class index extends React.Component {
       return (
         <nav
           className="navbar"
-          style={{ backgroundColor: "rgb(251, 251, 251)" }}
+          style={{ backgroundColor: "rgb(252, 252, 252)" }}
         >
           <div>
             <Link
@@ -79,15 +79,14 @@ class index extends React.Component {
     }
   }
 }
-const mapStateToProps = state => {
-  return {
-    school: state.school,
-    auth: state.auth
-  };
-};
+const mapStateToProps = state => ({
+  school: state.school,
+  auth: state.auth
+});
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(actionCreators.logout())
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/index";
-import StudentRow from "./StudentRow";
 import { Container, Row, Col, Table } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
-import Card from "../Card/Card";
+
 import "./style.css";
+import Card from "../Card/Card";
+import StudentRow from "./StudentRow";
+import * as actionCreators from "../../store/actions/index";
+
 class StudentsList extends Component {
   componentDidMount() {
     this.props.fetchStudentsList();
@@ -59,12 +60,9 @@ class StudentsList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    loading: state.studentReducer.loading
-    // students: state.studentReducer.students
-  };
-};
+const mapStateToProps = state => ({
+  loading: state.studentReducer.loading
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
