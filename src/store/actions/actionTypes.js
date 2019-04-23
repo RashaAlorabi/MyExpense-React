@@ -20,3 +20,4 @@ export const FETCH_SCHOOL_PROFILE = "FETCH_SCHOOL_PROFILE";
 
 export const SET_LOADING = "SET_LOADING";
 export const RESET_ERRORS = "RESET_ERRORS";
+

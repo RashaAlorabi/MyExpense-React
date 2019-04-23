@@ -13,7 +13,7 @@ export {
   addStudent,
   updateStudent,
   deleteStudent,
-  filterStudentsList
+  filterStudens,
 } from "./studentAction";
 
 export { fetchSchool } from "./schoolProfile";

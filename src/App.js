@@ -28,21 +28,12 @@ class App extends Component {
     this.props.fetchItems();
     this.props.fetchCategories();
   }
-  async componentDidUpdate(prevProps){
-    if (this.props.auth.user !== prevProps.auth.user){
-      // await this.props.checkForExpiredToken();
-      await this.props.fetchSchool();
-      await this.props.fetchItems();
-      await this.props.fetchStudentsList();
-      await this.props.fetchCategories();
-    }
-  }
   render() {
     return (
       <div style={{ backgroundImage: `url(${pic2})` }} className="body">
         <Navbar />
         <div className="row">
-          <div className="col-9 offset-1">
+          <div className="col-8 offset-1">
             <Switch>
               <Route path="/Home" component={Home} />
               <Route path="/Login" component={Login} />
@@ -75,16 +66,14 @@ class App extends Component {
               />
               <Route
                 path="/students:Grade?"
-                render={props => (
-                  <StudentsList {...props} students={this.props.students} />
-                )}
+                component={StudentsList}
               />
 
               <Redirect to="/Login" />
             </Switch>
           </div>
           <div
-            className="col-2 mt-0 mh-100"
+            className="col-3 mt-0 mh-100"
             style={{ backgroundImage: `url(${pic2})` }}
           >
             <SidNav />

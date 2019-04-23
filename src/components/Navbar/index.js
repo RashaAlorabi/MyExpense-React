@@ -14,7 +14,7 @@ class index extends React.Component {
     return (
       <nav
           className="navbar"
-          style={{ backgroundColor: "rgb(245, 246, 241)" }}
+          style={{ backgroundColor: "rgb(27, 109, 150)" }}
         >
           <div>
             { user ? <span
@@ -48,7 +48,7 @@ class index extends React.Component {
               
           </div>
           <div>
-            <h1 className="navbar-brand">{user ? `مصروفي ${profile && profile.name}`: "مصروفي"}</h1>
+            <h1 className="navbar-brand" style={{color:"white"}}>{user ? `مصروفي ${profile && profile.name}`: "مصروفي"}</h1>
           </div>
       </nav> 
     );

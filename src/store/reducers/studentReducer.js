@@ -53,9 +53,11 @@ const classReducer = (state = initialState, action) => {
     case actionTypes.FILTER_STUDENTS:
       return {
         ...state,
-        filteredStudent: [...state.students].filter(student =>
-          student.grade.includes("Grade" + action.payload)
-        )
+        filteredStudent: state.students.filter(student => {
+          return `${student.name}`
+              .toLowerCase()
+              .includes(action.payload.toLowerCase());
+        })
       };
     default:
       return state;

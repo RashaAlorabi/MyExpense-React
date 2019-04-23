@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-
+import Login from "../Authintication"
 import Card from "../Card/Card";
 import * as actionCreators from "../../store/actions/index";
 
@@ -60,102 +60,106 @@ class StudentUpdate extends Component {
       </option>
     ));
     const errors = this.props.errors;
-    const student = this.props.student;
-
-    return (
-      <div className="content">
-        <Container fluid>
-          <Row className="row mt-">
-            <Col md={12}>
-              <Card
-                title="تحديث بيانات الطالب"
-                updatestudent
-                content={
-                  <Row>
-                    <div className="wrapper wrapper--w680 my-3">
-                      <div className="card card-4">
-                        <div className="card-body">
-                          <form onSubmit={this.submitStudent}>
-                            {!!errors.length && (
-                              <div className="alert alert-danger" role="alert">
-                                {errors.map(error => (
-                                  <p key={error}>{error}</p>
-                                ))}
-                              </div>
-                            )}
-
-                            <label className="label">اسم الطالب رباعي</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              name="name"
-                              value={this.state.name}
-                              onChange={this.textChangeHandler}
-                            />
-
-                            <label
-                              htmlFor="exampleFormControlSelect1"
-                              className="label"
-                            >
-                              المرحلة الدراسية
-                            </label>
-                            <select
-                              className="form-control"
-                              name="grade"
-                              value={this.state.name}
-                              onChange={this.textChangeHandler}
-                            >
-                              {grades}
-                            </select>
-
-                            <label className="label">حد المصروف اليومي</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              name="limit"
-                              value={this.state.limit}
-                              onChange={this.textChangeHandler}
-                            />
-
-                            <label className="label">الحالة الصحية</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              name="health"
-                              value={this.state.health}
-                              onChange={this.textChangeHandler}
-                            />
-
-                            <label className="label">صورة الطالب</label>
-                            <input
-                              type="file"
-                              className="form-control"
-                              name="image_file"
-                              onChange={this.onImageChange}
-                              id="inputFileToLoad"
-                            />
-
-                            <button className="btn btn-primary" type="submit">
-                              تحديث
-                            </button>
-                          </form>
+    let {user} = this.props.auth
+    if (user){
+      return (
+        <div className="content">
+          <Container fluid>
+            <Row className="row mt-">
+              <Col md={12}>
+                <Card
+                  title="تحديث بيانات الطالب"
+                  updatestudent
+                  content={
+                    <Row>
+                      <div className="wrapper wrapper--w680 my-3">
+                        <div className="card card-4">
+                          <div className="card-body">
+                            <form onSubmit={this.submitStudent}>
+                              {!!errors.length && (
+                                <div className="alert alert-danger" role="alert">
+                                  {errors.map(error => (
+                                    <p key={error}>{error}</p>
+                                  ))}
+                                </div>
+                              )}
+  
+                              <label className="label">اسم الطالب رباعي</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                name="name"
+                                value={this.state.name}
+                                onChange={this.textChangeHandler}
+                              />
+  
+                              <label
+                                htmlFor="exampleFormControlSelect1"
+                                className="label"
+                              >
+                                المرحلة الدراسية
+                              </label>
+                              <select
+                                className="form-control"
+                                name="grade"
+                                value={this.state.name}
+                                onChange={this.textChangeHandler}
+                              >
+                                {grades}
+                              </select>
+  
+                              <label className="label">حد المصروف اليومي</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                name="limit"
+                                value={this.state.limit}
+                                onChange={this.textChangeHandler}
+                              />
+  
+                              <label className="label">الحالة الصحية</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                name="health"
+                                value={this.state.health}
+                                onChange={this.textChangeHandler}
+                              />
+  
+                              <label className="label">صورة الطالب</label>
+                              <input
+                                type="file"
+                                className="form-control"
+                                name="image_file"
+                                onChange={this.onImageChange}
+                                id="inputFileToLoad"
+                              />
+  
+                              <button className="btn btn-primary" type="submit">
+                                تحديث
+                              </button>
+                            </form>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Row>
-                }
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+                    </Row>
+                  }
+                />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    }else{
+      return <Login/>
+    }
   }
 }
 
 const mapStateToProps = state => ({
   errors: state.errorReducer.errors,
-  student: state.studentReducer.student
+  student: state.studentReducer.student,
+  auth:state.auth
 });
 
 const mapDispatchToProps = dispatch => ({

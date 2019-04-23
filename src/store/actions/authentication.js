@@ -48,7 +48,7 @@ export const login = (userData, history) => {
     } catch (error) {
       dispatch({
         type: actionTypes.SET_ERRORS,
-        payload: error.response.data
+        payload: error.data
       });
     }
   };
