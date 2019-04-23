@@ -1,67 +1,66 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col, Table } from "react-bootstrap";
+import Login from "../Authintication/index"
 
 import "./style.css";
 import Card from "../Card/Card";
 import StudentRow from "./StudentRow";
 import * as actionCreators from "../../store/actions/index";
+import SearchBar from "../SearchBar";
 
 class StudentsList extends Component {
-  componentDidMount() {
-    this.props.fetchStudentsList();
+  async componentDidMount() {
+    await this.props.fetchStudentsList();
   }
 
   render() {
     let studentRow;
-    if (this.props.loading) {
-      studentRow = <div />;
+    let { filteredStudent,loading } =  this.props.Student
+    if (loading) {
+      return <div />;
     } else {
-      studentRow = this.props.students
-        .filter(
-          student => student.grade === `Grade ${this.props.match.params.Grade}`
-        )
-        .map(student => <StudentRow key={student.id} student={student} />);
+      if (this.props.match.params.Grade){
+        studentRow = filteredStudent
+          .filter(
+            student => student.grade === `Grade ${this.props.match.params.Grade}`
+          )
+          .map(student => <StudentRow key={student.id} student={student} />);
+      }else{
+        studentRow = filteredStudent.map(student => <StudentRow key={student.id} student={student} />);
+      }
     }
-
-    return (
-      <div className="content">
-        <Container fluid>
-          <Row>
-            <Col md={12}>
-              <Card
-                title="قائمة الطلاب"
-                studentlist
-                ctTableResponsive
-                content={
-                  <Table striped hover>
-                    <thead>
-                      <tr>
-                        <th scope="col" className="th">
-                          المرحلة الدراسية{" "}
-                        </th>
-                        <th scope="col" className="th">
-                          اسم الطالب
-                        </th>
-                        <th scope="col" className="th">
-                          رقم الطالب
-                        </th>
-                      </tr>
-                    </thead>
-                    {studentRow}
-                  </Table>
-                }
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+    let { user } = this.props.auth
+    if (user){
+      return (
+        <div className="content my-4">
+          <div className="mt-5">
+          <SearchBar />
+          </div>
+          <div className="text-center mb-5">
+            <div style={{backgroundColor:"rgb(27, 109, 150)", color:"white"}} className="col-12 mb-2 border p-2 animated zoomIn">
+              <h1>قائمة الطلاب</h1>
+            </div>
+            <div className="row animated zoomIn">
+                <div className="col-4"><h4>المرحلة الدراسية</h4></div>
+                <div className="col-4"><h4>أسم الطالب</h4></div>
+                <div className="col-4"><h4>رقم الطالب</h4></div>
+            </div>
+            <div className="text-center">
+             {studentRow}
+            </div>
+          </div>
+          </div>
+      );
+    }else{
+      return <Login/>
+    }
   }
 }
 
 const mapStateToProps = state => ({
-  loading: state.studentReducer.loading
+  Student: state.studentReducer,
+  auth: state.auth
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -72,3 +71,15 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(StudentsList);
+
+{/* <tr>
+                          <th scope="col" className="th">
+                            المرحلة الدراسية{" "}
+                          </th>
+                          <th scope="col" className="th">
+                            اسم الطالب
+                          </th>
+                          <th scope="col" className="th">
+                            رقم الطالب
+                          </th>
+                        </tr> */}

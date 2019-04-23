@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-
+import Login from "../Authintication"
 import Card from "../Card/Card";
 import * as actionCreators from "../../store/actions/index";
 
@@ -61,7 +61,8 @@ class StudentUpdate extends Component {
     ));
     const errors = this.props.errors;
     const student = this.props.student;
-
+     let {user} = this.props.auth
+    if (user){
     return (
       <div className="content">
         <Container fluid>
@@ -145,20 +146,24 @@ class StudentUpdate extends Component {
                         </div>
                       </div>
                     </div>
-                  </Row>
-                }
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+                    </Row>
+                  }
+                />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    }else{
+      return <Login/>
+    }
   }
 }
 
 const mapStateToProps = state => ({
   errors: state.errorReducer.errors,
-  student: state.studentReducer.student
+  student: state.studentReducer.student,
+  auth:state.auth
 });
 
 const mapDispatchToProps = dispatch => ({

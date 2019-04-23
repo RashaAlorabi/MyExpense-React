@@ -9,8 +9,8 @@ class index extends Component {
     let {user} = this.props.auth
     if (user){
       return (
-        <div className="mt-2">
-          <div className="m-1">
+        <div className="mx-3 mt-3 row">
+          <div className="m-1 col-12">
             <Link
               to="/Home"
               className="btn btn-lg btn-light btn-block"
@@ -22,12 +22,12 @@ class index extends Component {
               الصفحة الرئيسية <i className="fas fa-home" />
             </Link>
           </div>
-          <div className="m-1">
+          <div className="m-1 col-12">
             <a
               href="#homeSubmen"
               data-toggle="collapse"
               aria-expanded="false"
-              className="btn btn-lg btn-light btn-block dropdown-toggle"
+              className="btn btn-lg btn-light btn-block dropdown-toggle col-12"
               style={{
                 backgroundColor: "rgb(27, 109, 150)",
                 color: "rgb(245, 246, 241)"
@@ -35,7 +35,7 @@ class index extends Component {
             >
               الطلاب
             </a>
-            <ul className="collapse list-unstyled" id="homeSubmen">
+            <ul className="collapse list-unstyled col-12" id="homeSubmen">
               <Link
                 to="/add/student"
                 className="my-2 btn btn-lg btn-light btn-block"
@@ -47,23 +47,33 @@ class index extends Component {
                 {" "}
                 إضافة طالب
               </Link>
-              <a
-                href="#homeSubmenu"
-                data-toggle="collapse"
-                aria-expanded="false"
-                className="btn btn-lg btn-light btn-block dropdown-toggle"
+              <Link
+                to="/students"
+                className="my-2 btn btn-lg btn-light btn-block"
                 style={{
                   backgroundColor: "rgb(251, 251, 251)",
                   color: "rgb(27, 109, 150)"
                 }}
               >
                 قائمة الطلاب
+              </Link>
+              <a
+                href="#homeSubmenu"
+                data-toggle="collapse"
+                aria-expanded="false"
+                className="btn btn-lg btn-light btn-block dropdown-toggle col-12"
+                style={{
+                  backgroundColor: "rgb(251, 251, 251)",
+                  color: "rgb(27, 109, 150)"
+                }}
+              >
+                حسب الصفوف
               </a>
-              <ul className="collapse list-unstyled" id="homeSubmenu">
+              <ul className="collapse list-unstyled col-12" id="homeSubmenu">
                 <li>
                   <Link
                     to="/students1"
-                    className="my-2 btn btn-lg btn-light btn-block"
+                    className="my-2 btn btn-lg btn-light btn-block col-12"
                     style={{
                       backgroundColor: "rgb(251, 251, 251)",
                       color: "rgb(27, 109, 150)"
@@ -75,7 +85,7 @@ class index extends Component {
                 <li>
                   <Link
                     to="/students2"
-                    className="my-2 btn btn-lg btn-light btn-block"
+                    className="my-2 btn btn-lg btn-light btn-block col-12"
                     style={{
                       backgroundColor: "rgb(251, 251, 251)",
                       color: "rgb(27, 109, 150)"
@@ -87,7 +97,7 @@ class index extends Component {
                 <li>
                   <Link
                     to="/students3"
-                    className="my-2 btn btn-lg btn-light btn-block"
+                    className="my-2 btn btn-lg btn-light btn-block col-12"
                     style={{
                       backgroundColor: "rgb(251, 251, 251)",
                       color: "rgb(27, 109, 150)"
@@ -100,7 +110,7 @@ class index extends Component {
                 <li>
                   <Link
                     to="/students4"
-                    className="my-2 btn btn-lg btn-light btn-block"
+                    className="my-2 btn btn-lg btn-light btn-block col-12"
                     style={{
                       backgroundColor: "rgb(251, 251, 251)",
                       color: "rgb(27, 109, 150)"
@@ -112,7 +122,7 @@ class index extends Component {
                 <li>
                   <Link
                     to="/students5"
-                    className="my-2 btn btn-lg btn-light btn-block"
+                    className="my-2 btn btn-lg btn-light btn-block col-12"
                     style={{
                       backgroundColor: "rgb(251, 251, 251)",
                       color: "rgb(27, 109, 150)"
@@ -124,7 +134,7 @@ class index extends Component {
                 <li>
                   <Link
                     to="/students6"
-                    className="my-2 btn btn-lg btn-light btn-block"
+                    className="my-2 btn btn-lg btn-light btn-block col-12"
                     style={{
                       backgroundColor: "rgb(251, 251, 251)",
                       color: "rgb(27, 109, 150)"
@@ -136,12 +146,12 @@ class index extends Component {
               </ul>
             </ul>
           </div>
-          <div className="m-1">
+          <div className="m-1 col-12">
             <a
               href="#ALMNTGAT"
               data-toggle="collapse"
               aria-expanded="false"
-              className="btn btn-lg btn-light btn-block dropdown-toggle"
+              className="btn btn-lg btn-light btn-block dropdown-toggle col-12"
               style={{
                 backgroundColor: "rgb(27, 109, 150)",
                 color: "rgb(245, 246, 241)"
@@ -150,11 +160,11 @@ class index extends Component {
               {" "}
               المنتجات
             </a>
-            <ul className="collapse list-unstyled" id="ALMNTGAT">
+            <ul className="collapse list-unstyled col-12" id="ALMNTGAT">
               <li>
                 <Link
                   to="/add/item"
-                  className="my-2 btn btn-lg btn-light btn-block"
+                  className="my-2 btn btn-lg btn-light btn-block col-12"
                   style={{
                     backgroundColor: "rgb(251, 251, 251)",
                     color: "rgb(27, 109, 150)"
@@ -166,7 +176,7 @@ class index extends Component {
               <li>
                 <Link
                   to="/items"
-                  className="my-2 btn btn-lg btn-light btn-block"
+                  className="my-2 btn btn-lg btn-light btn-block col-12"
                   style={{
                     backgroundColor: "rgb(251, 251, 251)",
                     color: "rgb(27, 109, 150)"

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-
+import Login from "../../Authintication"
 import * as actionCreators from "../../../store/actions";
 import CategoryOption from "../AddItem/CategoryOption";
 import Card from "../../Card/Card";
@@ -80,109 +80,116 @@ class UpdateItem extends Component {
         <CategoryOption key={category.id} category={category} />
       ));
     }
-    return (
-      <div className="content">
-        <Container fluid>
-          <Row>
-            <Col md={12}>
-              <Card
-                title="تحديث المنتج"
-                updateitem
-                content={
-                  <Row>
-                    <div className="wrapper wrapper--w680 my-3">
-                      <div className="card card-4">
-                        <div className="card-body">
-                          <form
-                            className="  align-self-baseline mt-5  "
-                            style={{ width: "500px" }}
-                            onSubmit={this.handleSubmit}
-                          >
-                            <label className="label">اسم المنتج</label>
-                            <input
-                              name="name"
-                              type="text"
-                              value={this.state.name}
-                              className="form-control"
-                              onChange={this.handleChange}
-                            />
-
-                            <label className="label">سعر المنتج</label>
-                            <input
-                              name="price"
-                              type="number"
-                              className="form-control"
-                              value={this.state.price}
-                              onChange={this.handleChange}
-                            />
-
-                            <label className="label">الكمية المتوفرة</label>
-                            <input
-                              name="stock"
-                              type="number"
-                              className="form-control"
-                              value={this.state.stock}
-                              onChange={this.handleChange}
-                            />
-
-                            <label
-                              htmlFor="exampleFormControlSelect1"
-                              className="label"
+    let { user } = this.props.auth
+    if (user){
+      return (
+        <div className="content animated bounceInDown">
+          <Container fluid>
+            <Row>
+              <Col md={12}>
+                <Card
+                  title="تحديث المنتج"
+                  updateitem
+                  content={
+                    <Row>
+                      <div className="wrapper wrapper--w680 my-3">
+                        <div className="card card-4">
+                          <div className="card-body">
+                            <form
+                              className="  align-self-baseline mt-5  "
+                              style={{ width: "500px" }}
+                              onSubmit={this.handleSubmit}
                             >
-                              صنف المنتج
-                            </label>
-                            <select
-                              className="form-control"
-                              onChange={this.handleChange}
-                              name="category"
-                              value={this.state.category}
-                            >
-                              <option className="form-control" value={"#"}>
-                                أختر الصنف
-                              </option>
-                              {category}
-                            </select>
-
-                            <label className="label">مكونات المنتج</label>
-
-                            <textarea
-                              type="text"
-                              className="form-control"
-                              name="description"
-                              value={this.state.description}
-                              onChange={this.handleChange}
-                            />
-                            <span className="label">صورة المنتج</span>
-
-                            <input
-                              type="file"
-                              className="form-control"
-                              name="image"
-                              onChange={this.onImageChange}
-                              id="inputFileToLoad"
-                            />
-
-                            <button className="btn" type="submit">
-                              تحديث{" "}
-                            </button>
-                          </form>
+                              <label className="label">اسم المنتج</label>
+                              <input
+                                name="name"
+                                type="text"
+                                value={this.state.name}
+                                className="form-control"
+                                onChange={this.handleChange}
+                              />
+  
+                              <label className="label">سعر المنتج</label>
+                              <input
+                                name="price"
+                                type="number"
+                                className="form-control"
+                                value={this.state.price}
+                                onChange={this.handleChange}
+                              />
+  
+                              <label className="label">الكمية المتوفرة</label>
+                              <input
+                                name="stock"
+                                type="number"
+                                className="form-control"
+                                value={this.state.stock}
+                                onChange={this.handleChange}
+                              />
+  
+                              <label
+                                htmlFor="exampleFormControlSelect1"
+                                className="label"
+                              >
+                                صنف المنتج
+                              </label>
+                              <select
+                                className="form-control"
+                                onChange={this.handleChange}
+                                name="category"
+                                value={this.state.category}
+                              >
+                                <option className="form-control" value={"#"}>
+                                  أختر الصنف
+                                </option>
+                                {category}
+                              </select>
+  
+                              <label className="label">مكونات المنتج</label>
+  
+                              <textarea
+                                type="text"
+                                className="form-control"
+                                name="description"
+                                value={this.state.description}
+                                onChange={this.handleChange}
+                              />
+                              <span className="label">صورة المنتج</span>
+  
+                              <input
+                                type="file"
+                                className="form-control"
+                                name="image"
+                                onChange={this.onImageChange}
+                                id="inputFileToLoad"
+                              />
+  
+                              <button className="btn" type="submit">
+                                تحديث{" "}
+                              </button>
+                            </form>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Row>
-                }
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+                    </Row>
+                  }
+                />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    }
+    else{
+      return <Login/>
+    }
   }
 }
 
 const mapStateToProps = state => ({
   item: state.items.item,
-  categories: state.items.categories
+  categories: state.items.categories,
+  auth:state.auth
 });
 
 const mapDispatchToProps = dispatch => ({

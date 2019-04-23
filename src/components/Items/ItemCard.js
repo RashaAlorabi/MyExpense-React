@@ -11,8 +11,9 @@ class ItemCard extends Component {
     const item = this.props.item;
 
     return (
-      <div style={{ marginLeft: "20px" }}>
+      <div  style={{ marginLeft: "20px" }}>
         <Col lg={2} md={3} sm={4} xs={6}>
+        <Link style={{textDecoration:"none", }} to={`/item/detail/${item.id}`}>
           <div
             style={{
               marginBottom: "10px",
@@ -22,20 +23,22 @@ class ItemCard extends Component {
             }}
             onClick={() => this.props.fetchItemDetail(item.id)}
           >
-            <Link to={`/item/detail/${item.id}`}>
+            
               <img className="card-img-top" src={item.image} alt="img" />
-            </Link>
-            <h6
+            
+            <h5
               style={{
                 textAlign: "center",
                 marginTop: "5px",
-
-                borderRadius: "10px"
+                borderRadius: "10px",
+                fontSize:20,
+                color:"black"
               }}
             >
               {item.name}
-            </h6>
+            </h5>
           </div>
+        </Link>
         </Col>
       </div>
     );

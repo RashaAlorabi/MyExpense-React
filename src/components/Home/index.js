@@ -4,6 +4,7 @@ import Login from "../Authintication/index"
 import * as actionCreators from "../../store/actions";
 
 class index extends React.Component {
+  
   render() {
     let { profile, loading } = this.props.school;
     let { user } = this.props.auth;
@@ -15,7 +16,7 @@ class index extends React.Component {
           <div className="container">
             <div className="row mt-4 justify-content-md-center">
               <div
-                className="card-light border border-warning"
+                className="animated fadeIn card-light border border-warning"
                 style={{ width: "18rem" }}
               >
                 <img
@@ -40,7 +41,7 @@ class index extends React.Component {
                 </div>
               </div>
               <div
-                className="card-light border border-warning ml-2"
+                className="animated fadeIn card-light border border-warning ml-2"
                 style={{ width: "18rem" }}
               >
                 <img
@@ -68,7 +69,13 @@ class index extends React.Component {
         );
       }
     } else {
-      return <Login/>
+      return (
+      <div className="container">
+      <div className="row mt-4 justify-content-md-center">
+      "GoodBye"
+      </div>
+      </div>
+      )
     }
   }
 }
@@ -79,7 +86,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchItems: () => dispatch(actionCreators.fetchItems())
+  fetchSchool: () => dispatch(actionCreators.fetchSchool()),
+  checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken()),
+  fetchItems: () => dispatch(actionCreators.fetchItems()),
+  fetchCategories: () => dispatch(actionCreators.fetchCategories()),
+  fetchStudentsList: () => dispatch(actionCreators.fetchStudentsList())
 });
 
 export default connect(

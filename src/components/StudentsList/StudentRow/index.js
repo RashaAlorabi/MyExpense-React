@@ -14,17 +14,23 @@ class StudentRow extends Component {
     }
 
     return (
-      <tbody>
-        <tr className="text-center">
-          <th className="th">{student.grade}</th>
-          <Link to={`/student/${student.id}/`}>
-            <th className="tn">{student.name}</th>
-          </Link>
-          <th scope="row" className="th">
-            {id}
-          </th>
-        </tr>
-      </tbody>
+      <Link className="btn btn-light btn-block  mt-1 animated slideInUp"  to={`/student/${student.id}/`}>
+      <div className="row">
+      <div className="col-4">{student.grade}</div>
+      <div className="col-4">{student.name}</div> 
+      <div className="col-4">{student.id}</div>
+      </div>
+      </Link>
+        // <tr className="text-center">
+        //   <th className="th">{student.grade}</th>
+        //   <Link to={`/student/${student.id}/`}>
+        //     <th className="tn">{student.name}</th>
+        //   </Link>
+        //   <th scope="row" className="th">
+        //     {id}
+        //   </th>
+        // </tr>
+        // style={{backgroundColor:"white", color:"black"}}
     );
   }
 }
