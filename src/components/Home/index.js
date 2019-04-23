@@ -2,9 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import Login from "../Authintication/index"
 import * as actionCreators from "../../store/actions";
+import { Link } from "react-router-dom";
 
 class index extends React.Component {
-  
+  async componentDidMount(){
+    await this.props.checkForExpiredToken();
+    await this.props.fetchSchool();
+      this.props.fetchStudentsList();
+      this.props.fetchItems();
+      this.props.fetchCategories();
+  }
+  componentDidUpdate(){
+
+  }
   render() {
     let { profile, loading } = this.props.school;
     let { user } = this.props.auth;
@@ -16,7 +26,7 @@ class index extends React.Component {
           <div className="container">
             <div className="row mt-4 justify-content-md-center">
               <div
-                className="animated fadeIn card-light border border-warning"
+                className="animated fadeIn card-light border border-info"
                 style={{ width: "18rem" }}
               >
                 <img
@@ -41,14 +51,14 @@ class index extends React.Component {
                 </div>
               </div>
               <div
-                className="animated fadeIn card-light border border-warning ml-2"
+                className="animated fadeIn card-light border border-info ml-2"
                 style={{ width: "18rem" }}
               >
                 <img
-                  src="https://png.pngtree.com/svg/20161216/9a50a5c88b.svg"
+                  src="https://static.thenounproject.com/png/1108706-200.png"
                   style={{ width: "100%" }}
-                  alt=" البضائع"
-                  className="card-img-top"
+                  alt=" المنتجات"
+                  className="card-img-top p-2"
                 />
                 <div className="card-body text-right">
                   <h5
@@ -56,7 +66,7 @@ class index extends React.Component {
                     style={{ fontSize: "40px" }}
                   >
                     {" "}
-                    البضائع{" "}
+                    المنتجات{" "}
                     <span className="badge badge-secondary float-left">
                       {profile.items.length}
                     </span>
@@ -72,7 +82,27 @@ class index extends React.Component {
       return (
       <div className="container">
       <div className="row mt-4 justify-content-md-center">
-      "GoodBye"
+        <div className="col-12 text-center">
+        <h1>
+        GoodBye
+        </h1>
+        </div>
+        <div>
+        <Link
+            to="/Login"
+            className="btn btn-light"
+            style={{ backgroundColor: "rgb(27, 109, 150)" }}
+          >
+            <i
+              className="fas fa-sign-out-alt"
+              style={{ color: "rgb(245, 246, 241)" }}
+            >
+              {" "}
+              تسجيل دخول
+            </i>
+          </Link>
+        </div>
+
       </div>
       </div>
       )
