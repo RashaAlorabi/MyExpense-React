@@ -6,6 +6,7 @@ import * as actionCreators from "../../../store/actions/index";
 import CategoryOption from "./CategoryOption";
 import Card from "../../Card/Card";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 class index extends Component {
   state = {
@@ -157,7 +158,33 @@ class index extends Component {
         </div>
       );
     }else{
-      return <Login/>
+      return (
+        <div className="container">
+        <div className="row mt-4 justify-content-md-center">
+          <div className="col-12 text-center">
+          <h1>
+          GoodBye
+          </h1>
+          </div>
+          <div>
+          <Link
+              to="/Login"
+              className="btn btn-light"
+              style={{ backgroundColor: "rgb(27, 109, 150)" }}
+            >
+              <i
+                className="fas fa-sign-out-alt"
+                style={{ color: "rgb(245, 246, 241)" }}
+              >
+                {" "}
+                تسجيل دخول
+              </i>
+            </Link>
+          </div>
+  
+        </div>
+        </div>
+        );
     }
   }
 }
