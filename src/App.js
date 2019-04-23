@@ -22,15 +22,13 @@ import pic2 from "./assets/img/pic2.png";
 
 class App extends Component {
   async componentDidMount() {
-    await this.props.checkForExpiredToken();
-    await this.props.fetchSchool();
-    this.props.fetchStudentsList();
-    this.props.fetchItems();
-    this.props.fetchCategories();
+      await this.props.checkForExpiredToken();
+      
+    
   }
   render() {
     return (
-      <div style={{ backgroundImage: `url(${pic2})` }} className="body">
+      <div>
         <Navbar />
         <div className="row">
           <div className="col-8 offset-1">
@@ -74,14 +72,13 @@ class App extends Component {
           </div>
           <div
             className="col-3 mt-0 mh-100"
-            style={{ backgroundImage: `url(${pic2})` }}
           >
             <SidNav />
           </div>
         </div>
 
-        <footer className="footer">
-          <p> كافة الحقوق محفوظة لمصروفي © 2019م </p>
+        <footer className="page-footer p-4 text-center fixed-bottom" style={{backgroundColor:"rgb(27, 109, 150)"}}>
+          <p style={{color:"white", fontSize:15}}> كافة الحقوق محفوظة لمصروفي © 2019م </p>
         </footer>
       </div>
     );

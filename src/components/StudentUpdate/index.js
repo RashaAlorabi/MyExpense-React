@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Login from "../Authintication"
 import Card from "../Card/Card";
 import * as actionCreators from "../../store/actions/index";
+import { Link } from "react-router-dom";
 
 class StudentUpdate extends Component {
   state = {
@@ -155,7 +156,33 @@ class StudentUpdate extends Component {
         </div>
       );
     }else{
-      return <Login/>
+      return (
+        <div className="container">
+        <div className="row mt-4 justify-content-md-center">
+          <div className="col-12 text-center">
+          <h1>
+          GoodBye
+          </h1>
+          </div>
+          <div>
+          <Link
+              to="/Login"
+              className="btn btn-light"
+              style={{ backgroundColor: "rgb(27, 109, 150)" }}
+            >
+              <i
+                className="fas fa-sign-out-alt"
+                style={{ color: "rgb(245, 246, 241)" }}
+              >
+                {" "}
+                تسجيل دخول
+              </i>
+            </Link>
+          </div>
+  
+        </div>
+        </div>
+        );
     }
   }
 }
