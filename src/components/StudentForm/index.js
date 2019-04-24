@@ -51,12 +51,12 @@ class StudentForm extends Component {
   render() {
     const errors = this.props.errors;
     let grades = [
-      "Grade 1",
-      "Grade 2",
-      "Grade 3",
-      "Grade 4",
-      "Grade 5",
-      "Grade 6"
+      "الصف الاول",
+      "الصف الثاني",
+      "الصف الثالث",
+      "الصف الرابع",
+      "الصف الخامس",
+      "الصف السادس"
     ].map(grade => (
       <option key={grade} value={grade}>
         {grade}
