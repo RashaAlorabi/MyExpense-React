@@ -46,9 +46,10 @@ export const login = (userData, history) => {
       });
       history.push("/Home");
     } catch (error) {
+      console.log("error ===> ", error.response.data)
       dispatch({
         type: actionTypes.SET_ERRORS,
-        payload: error.data
+        payload: error.response.data
       });
     }
   };

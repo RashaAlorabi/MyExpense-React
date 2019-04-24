@@ -93,7 +93,7 @@ class StudentDetail extends Component {
                     />
                   </div>
                   <div className="col-12 my-4">
-                    <div style={{fontSize:15}}>{`${student.grade} الصف`}</div>
+                    <div style={{fontSize:15}}>{student.grade}</div>
                   </div>
                 </div>
               </div>

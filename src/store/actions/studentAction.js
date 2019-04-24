@@ -56,8 +56,10 @@ export const addStudent = (studentData, history) => {
       });
       history.push("/students");
     } catch (err) {
-      console.error("Error while adding a student", err);
-      if (err.response) console.error(err.response.data);
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: err.response.data
+      });
     }
   };
 };
@@ -87,7 +89,10 @@ export const updateStudent = (studentData, history) => {
       });
       history.push("/students");
     } catch (err) {
-      console.error("Error while updating a student", err);
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: err.data
+      });
     }
   };
 };
