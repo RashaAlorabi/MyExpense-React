@@ -3,7 +3,8 @@ import jwt_decode from "jwt-decode";
 import * as actionTypes from "./actionTypes";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/api"
+  //baseURL: "http://127.0.0.1:8000/api"
+  baseURL: "http://172.20.10.2:30/api"
 });
 
 const setAuthToken = token => {
@@ -46,7 +47,7 @@ export const login = (userData, history) => {
       });
       history.push("/Home");
     } catch (error) {
-      console.log("error ===> ", error.response.data)
+      console.log("error ===> ", error.response.data);
       dispatch({
         type: actionTypes.SET_ERRORS,
         payload: error.response.data
