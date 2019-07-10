@@ -8,6 +8,7 @@ import * as jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "./styles.css";
 
+//Move all in-line styling to a .css style sheet, then apply the styling rules here
 class StudentDetail extends Component {
   componentDidMount() {
     this.props.fetchStudentDetail(this.props.match.params.studentID);

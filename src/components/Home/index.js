@@ -4,6 +4,7 @@ import Login from "../Authintication/index"
 import * as actionCreators from "../../store/actions";
 import { Link } from "react-router-dom";
 
+//Move all in-line styling to a .css style sheet, then apply the styling rules here
 class index extends React.Component {
   async componentDidMount(){
     await this.props.checkForExpiredToken();

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import pic2 from "../../assets/img/pic2.png";
 
+//Move all in-line styling to a .css style sheet, then apply the styling rules here
 export class Card extends Component {
   render() {
     return (
